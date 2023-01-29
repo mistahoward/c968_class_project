@@ -152,9 +152,9 @@ namespace C968
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(18, 165);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 17);
+            this.label6.Size = new System.Drawing.Size(30, 17);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Minimum";
+            this.label6.Text = "Min";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // textBox5
@@ -169,9 +169,9 @@ namespace C968
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(171, 165);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 17);
+            this.label7.Size = new System.Drawing.Size(33, 17);
             this.label7.TabIndex = 14;
-            this.label7.Text = "Maximum";
+            this.label7.Text = "Max";
             // 
             // textBox6
             // 
