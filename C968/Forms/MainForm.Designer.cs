@@ -50,7 +50,7 @@ namespace C968
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(243, 33);
+            this.textBox1.Location = new System.Drawing.Point(162, 32);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(206, 22);
             this.textBox1.TabIndex = 0;
@@ -58,7 +58,7 @@ namespace C968
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.button1.Location = new System.Drawing.Point(162, 32);
+            this.button1.Location = new System.Drawing.Point(374, 31);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -173,7 +173,7 @@ namespace C968
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.button8.Location = new System.Drawing.Point(643, 32);
+            this.button8.Location = new System.Drawing.Point(855, 31);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 23);
             this.button8.TabIndex = 12;
@@ -182,7 +182,7 @@ namespace C968
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(724, 33);
+            this.textBox2.Location = new System.Drawing.Point(643, 33);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(206, 22);
             this.textBox2.TabIndex = 11;
@@ -194,10 +194,10 @@ namespace C968
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(65, 23);
             this.button9.TabIndex = 18;
-            this.button9.Text = "Delete";
+            this.button9.Text = "Exit";
             this.button9.UseVisualStyleBackColor = true;
             // 
-            // MainScreen
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
