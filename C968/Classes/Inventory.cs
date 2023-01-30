@@ -8,5 +8,6 @@ namespace C968.Classes
 {
     class Inventory
     {
+        
     }
 }
