@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace C968.Classes
 {
-    class Inhouse
+    class Inhouse : Part
     {
+        private int _machineId;
+
+        public int MachineId { get => _machineId; set => _machineId = value; }
     }
 }

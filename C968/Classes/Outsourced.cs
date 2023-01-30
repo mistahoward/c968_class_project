@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace C968.Classes
 {
-    class Outsourced
+    class Outsourced : Part
     {
+        private int _companyName;
+
+        public int CompanyName { get => _companyName; set => _companyName = value; }
     }
 }
