@@ -22,17 +22,22 @@ namespace C968.Classes
         public int InStock { get => _inStock; set => _inStock = value; }
         public int Min { get => _min; set => _min = value; }
         public int Max { get => _max; set => _max = value; }
+
         public BindingList<Part> AssociatedParts = new BindingList<Part>();
         
         public void AddAssociatedPart(Part partToAdd)
         {
-
+            AssociatedParts.Add(partToAdd);
         }
         public bool RemoveAssociatedPart(int partIdToRemove)
         {
+            Part partToRemove = LookupAssociatedPart(partIdToRemove);
+            bool removalResult = AssociatedParts.Remove(partToRemove);
+            return removalResult;
         }
         public Part LookupAssociatedPart(int partIdToLookUp)
         {
+            return (Part)AssociatedParts.Where(p => p.PartId == partIdToLookUp);
         }
     }
 }

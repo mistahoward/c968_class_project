@@ -14,34 +14,50 @@ namespace C968.Classes
         
         public void AddProduct(Product productToAdd)
         {
-
+            Products.Add(productToAdd);
         }
         public bool RemoveProduct(int productIdToRemove)
         {
+            var productToRemove = LookupProduct(productIdToRemove);
+            bool removeResult = Products.Remove(productToRemove);
+            return removeResult;
         }
         public Product LookupProduct(int productIdToLookup)
         {
-
+            return (Product)Products.Where(p => p.ProductId == productIdToLookup);
         }
         public void UpdateProduct(int productIdToUpdate, Product productInfo)
         {
+            var productToUpdate = LookupProduct(productIdToUpdate);
+            productToUpdate.ProductId = productInfo.ProductId;
+            productToUpdate.Name = productInfo.Name;
+            productToUpdate.Price = productInfo.Price;
+            productToUpdate.InStock = productInfo.InStock;
+            productToUpdate.Min = productInfo.Min;
+            productToUpdate.Max = productInfo.Max;
 
         }
         public void AddPart(Part partToAdd)
         {
-
+            Parts.Add(partToAdd);
         }
         public bool DeletePart(Part partToDelete)
         {
-
+            var removeResult = Parts.Remove(partToDelete);
+            return removeResult;
         }
         public Part LookupPart(int partIdToLookup)
         {
-
+            return (Part)Parts.Where(p => p.PartId == partIdToLookup);
         }
         public void UpdatePart(int partdIdToUpdate, Part partInfo)
         {
-
+            var partToUpdate = LookupPart(partdIdToUpdate);
+            partToUpdate.PartId = partInfo.PartId;
+            partToUpdate.Name = partInfo.Name;
+            partToUpdate.Price = partInfo.Price;
+            partToUpdate.Min = partInfo.Min;
+            partToUpdate.Max = partInfo.Max;
         }
 
     }

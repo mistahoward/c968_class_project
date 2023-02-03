@@ -1,0 +1,12 @@
+C:\Users\AlexHoward\source\repos\c968_class_project\C968\bin\Debug\C968.exe.config
+C:\Users\AlexHoward\source\repos\c968_class_project\C968\bin\Debug\C968.exe
+C:\Users\AlexHoward\source\repos\c968_class_project\C968\bin\Debug\C968.pdb
+C:\Users\AlexHoward\source\repos\c968_class_project\C968\obj\Debug\C968.csproj.AssemblyReference.cache
+C:\Users\AlexHoward\source\repos\c968_class_project\C968\obj\Debug\C968.MainForm.resources
+C:\Users\AlexHoward\source\repos\c968_class_project\C968\obj\Debug\C968.PartForm.resources
+C:\Users\AlexHoward\source\repos\c968_class_project\C968\obj\Debug\C968.ProductForm.resources
+C:\Users\AlexHoward\source\repos\c968_class_project\C968\obj\Debug\C968.Properties.Resources.resources
+C:\Users\AlexHoward\source\repos\c968_class_project\C968\obj\Debug\C968.csproj.GenerateResource.cache
+C:\Users\AlexHoward\source\repos\c968_class_project\C968\obj\Debug\C968.csproj.CoreCompileInputs.cache
+C:\Users\AlexHoward\source\repos\c968_class_project\C968\obj\Debug\C968.exe
+C:\Users\AlexHoward\source\repos\c968_class_project\C968\obj\Debug\C968.pdb

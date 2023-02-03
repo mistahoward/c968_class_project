@@ -36,5 +36,15 @@ namespace C968
         {
 
         }
+
+        private void ProductForm_Load(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = Classes.Inventory.Parts;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

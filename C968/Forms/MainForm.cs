@@ -19,7 +19,8 @@ namespace C968
 
         private void MainFormLoad(object sender, EventArgs e)
         {
-
+            dataGridView2.DataSource = Classes.Inventory.Parts;
+            dataGridView1.DataSource = Classes.Inventory.Products;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,7 +35,21 @@ namespace C968
 
         private void button3_Click(object sender, EventArgs e)
         {
+            PartForm partsForm = new PartForm();
+            partsForm.label1.Text = "Add Part";
+            partsForm.ShowDialog();
+        }
 
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ProductForm productsForm = new ProductForm();
+            productsForm.ProductFormTitle.Text = "Add Product";
+            productsForm.ShowDialog();
         }
     }
 }

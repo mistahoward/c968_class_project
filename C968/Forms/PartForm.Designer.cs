@@ -80,6 +80,7 @@ namespace C968
             this.label1.Size = new System.Drawing.Size(108, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Add/Modify Part";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
             // 
@@ -249,7 +250,6 @@ namespace C968
 
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -266,5 +266,6 @@ namespace C968
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Label label1;
     }
 }
