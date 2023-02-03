@@ -22,11 +22,11 @@ namespace C968.Classes
             bool removeResult = Products.Remove(productToRemove);
             return removeResult;
         }
-        public Product LookupProduct(int productIdToLookup)
+        public static Product LookupProduct(int productIdToLookup)
         {
             return (Product)Products.Where(p => p.ProductId == productIdToLookup);
         }
-        public void UpdateProduct(int productIdToUpdate, Product productInfo)
+        public static void UpdateProduct(int productIdToUpdate, Product productInfo)
         {
             var productToUpdate = LookupProduct(productIdToUpdate);
             productToUpdate.ProductId = productInfo.ProductId;
@@ -37,20 +37,20 @@ namespace C968.Classes
             productToUpdate.Max = productInfo.Max;
 
         }
-        public void AddPart(Part partToAdd)
+        public static void AddPart(Part partToAdd)
         {
             Parts.Add(partToAdd);
         }
-        public bool DeletePart(Part partToDelete)
+        public static bool DeletePart(Part partToDelete)
         {
             var removeResult = Parts.Remove(partToDelete);
             return removeResult;
         }
-        public Part LookupPart(int partIdToLookup)
+        public static Part LookupPart(int partIdToLookup)
         {
             return (Part)Parts.Where(p => p.PartId == partIdToLookup);
         }
-        public void UpdatePart(int partdIdToUpdate, Part partInfo)
+        public static void UpdatePart(int partdIdToUpdate, Part partInfo)
         {
             var partToUpdate = LookupPart(partdIdToUpdate);
             partToUpdate.PartId = partInfo.PartId;

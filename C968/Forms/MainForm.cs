@@ -1,4 +1,5 @@
-﻿using System;
+﻿using C968.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,8 +20,8 @@ namespace C968
 
         private void MainFormLoad(object sender, EventArgs e)
         {
-            PartsGrid.DataSource = Classes.Inventory.Parts;
-            ProductsGrid.DataSource = Classes.Inventory.Products;
+            PartsGrid.DataSource = Inventory.Parts;
+            ProductsGrid.DataSource = Inventory.Products;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,7 +37,9 @@ namespace C968
         private void button3_Click(object sender, EventArgs e)
         {
             PartForm partsForm = new PartForm();
+            partsForm.adding = true;
             partsForm.label1.Text = "Add Part";
+            partsForm.PartSave.Text = "Add";
             partsForm.ShowDialog();
         }
 
@@ -55,6 +58,11 @@ namespace C968
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void DeletePart_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

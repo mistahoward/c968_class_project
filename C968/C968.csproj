@@ -46,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Inhouse.cs" />
+    <Compile Include="Classes\InHousePart.cs" />
     <Compile Include="Classes\Inventory.cs" />
-    <Compile Include="Classes\Outsourced.cs" />
+    <Compile Include="Classes\OutsourcedPart.cs" />
     <Compile Include="Classes\Part.cs" />
     <Compile Include="Classes\Product.cs" />
     <Compile Include="Forms\PartForm.cs">

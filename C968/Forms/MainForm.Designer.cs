@@ -119,6 +119,7 @@ namespace C968
             this.DeletePart.TabIndex = 10;
             this.DeletePart.Text = "Delete";
             this.DeletePart.UseVisualStyleBackColor = true;
+            this.DeletePart.Click += new System.EventHandler(this.DeletePart_Click);
             // 
             // DeleteProduct
             // 
