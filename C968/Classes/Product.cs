@@ -24,7 +24,16 @@ namespace C968.Classes
         public int Max { get => _max; set => _max = value; }
 
         public BindingList<Part> AssociatedParts = new BindingList<Part>();
-        
+        public Product(int productId, string name, int inStock, decimal price, int max, int min)
+        {
+            ProductId = productId;
+            Name = name;
+            Price = price; 
+            InStock = inStock;
+            Max = max;
+            Min = min;
+        }
+
         public void AddAssociatedPart(Part partToAdd)
         {
             AssociatedParts.Add(partToAdd);
