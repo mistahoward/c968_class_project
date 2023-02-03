@@ -32,20 +32,20 @@ namespace C968
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.PartsSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.PartsGrid = new System.Windows.Forms.DataGridView();
             this.AddPart = new System.Windows.Forms.Button();
             this.ModifyPart = new System.Windows.Forms.Button();
             this.DeletePart = new System.Windows.Forms.Button();
             this.DeleteProduct = new System.Windows.Forms.Button();
             this.ModifyProduct = new System.Windows.Forms.Button();
             this.AddProduct = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ProductsGrid = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.ProductsSearch = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.ExitButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartsGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -78,16 +78,16 @@ namespace C968
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // dataGridView2
+            // PartsGrid
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(40, 65);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(409, 262);
-            this.dataGridView2.TabIndex = 7;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.PartsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PartsGrid.Location = new System.Drawing.Point(40, 65);
+            this.PartsGrid.Name = "PartsGrid";
+            this.PartsGrid.RowHeadersWidth = 51;
+            this.PartsGrid.RowTemplate.Height = 24;
+            this.PartsGrid.Size = new System.Drawing.Size(409, 262);
+            this.PartsGrid.TabIndex = 7;
+            this.PartsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // AddPart
             // 
@@ -151,15 +151,15 @@ namespace C968
             this.AddProduct.UseVisualStyleBackColor = true;
             this.AddProduct.Click += new System.EventHandler(this.button7_Click);
             // 
-            // dataGridView1
+            // ProductsGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(521, 65);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(409, 262);
-            this.dataGridView1.TabIndex = 14;
+            this.ProductsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ProductsGrid.Location = new System.Drawing.Point(521, 65);
+            this.ProductsGrid.Name = "ProductsGrid";
+            this.ProductsGrid.RowHeadersWidth = 51;
+            this.ProductsGrid.RowTemplate.Height = 24;
+            this.ProductsGrid.Size = new System.Drawing.Size(409, 262);
+            this.ProductsGrid.TabIndex = 14;
             // 
             // label2
             // 
@@ -198,6 +198,7 @@ namespace C968
             this.ExitButton.TabIndex = 18;
             this.ExitButton.Text = "Exit";
             this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // MainForm
             // 
@@ -208,22 +209,22 @@ namespace C968
             this.Controls.Add(this.DeleteProduct);
             this.Controls.Add(this.ModifyProduct);
             this.Controls.Add(this.AddProduct);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.ProductsGrid);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ProductsSearch);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.DeletePart);
             this.Controls.Add(this.ModifyPart);
             this.Controls.Add(this.AddPart);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.PartsGrid);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PartsSearch);
             this.Controls.Add(this.textBox1);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainFormLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartsGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductsGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,14 +235,14 @@ namespace C968
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button PartsSearch;
         internal System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView PartsGrid;
         private System.Windows.Forms.Button AddPart;
         private System.Windows.Forms.Button ModifyPart;
         private System.Windows.Forms.Button DeletePart;
         private System.Windows.Forms.Button DeleteProduct;
         private System.Windows.Forms.Button ModifyProduct;
         private System.Windows.Forms.Button AddProduct;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ProductsGrid;
         internal System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button ProductsSearch;
         private System.Windows.Forms.TextBox textBox2;

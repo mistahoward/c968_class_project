@@ -19,8 +19,8 @@ namespace C968
 
         private void MainFormLoad(object sender, EventArgs e)
         {
-            dataGridView2.DataSource = Classes.Inventory.Parts;
-            dataGridView1.DataSource = Classes.Inventory.Products;
+            PartsGrid.DataSource = Classes.Inventory.Parts;
+            ProductsGrid.DataSource = Classes.Inventory.Products;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -50,6 +50,11 @@ namespace C968
             ProductForm productsForm = new ProductForm();
             productsForm.ProductFormTitle.Text = "Add Product";
             productsForm.ShowDialog();
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

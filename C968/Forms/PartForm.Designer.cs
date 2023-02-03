@@ -29,48 +29,49 @@ namespace C968
         /// </summary>
         private void InitializeComponent()
         {
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.InHouse = new System.Windows.Forms.RadioButton();
+            this.Outsourced = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PartIdInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.PartNameInput = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.PartInventoryInput = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.PartPriceInput = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.PartMinInput = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.PartMaxInput = new System.Windows.Forms.TextBox();
+            this.PartExtraLabel = new System.Windows.Forms.Label();
+            this.PartExtraInput = new System.Windows.Forms.TextBox();
+            this.PartSave = new System.Windows.Forms.Button();
+            this.PartExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // radioButton1
+            // InHouse
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(126, 11);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(86, 21);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "In-House";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.InHouse.AutoSize = true;
+            this.InHouse.Location = new System.Drawing.Point(126, 11);
+            this.InHouse.Name = "InHouse";
+            this.InHouse.Size = new System.Drawing.Size(86, 21);
+            this.InHouse.TabIndex = 0;
+            this.InHouse.TabStop = true;
+            this.InHouse.Text = "In-House";
+            this.InHouse.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // Outsourced
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(229, 11);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(103, 21);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Outsourced";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.Outsourced.AutoSize = true;
+            this.Outsourced.Location = new System.Drawing.Point(229, 11);
+            this.Outsourced.Name = "Outsourced";
+            this.Outsourced.Size = new System.Drawing.Size(103, 21);
+            this.Outsourced.TabIndex = 1;
+            this.Outsourced.TabStop = true;
+            this.Outsourced.Text = "Outsourced";
+            this.Outsourced.UseVisualStyleBackColor = true;
+            this.Outsourced.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // label1
             // 
@@ -82,12 +83,12 @@ namespace C968
             this.label1.Text = "Add/Modify Part";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // PartIdInput
             // 
-            this.textBox1.Location = new System.Drawing.Point(20, 71);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 3;
+            this.PartIdInput.Location = new System.Drawing.Point(20, 71);
+            this.PartIdInput.Name = "PartIdInput";
+            this.PartIdInput.Size = new System.Drawing.Size(100, 22);
+            this.PartIdInput.TabIndex = 3;
             // 
             // label2
             // 
@@ -107,12 +108,12 @@ namespace C968
             this.label3.TabIndex = 6;
             this.label3.Text = "Name";
             // 
-            // textBox2
+            // PartNameInput
             // 
-            this.textBox2.Location = new System.Drawing.Point(174, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 5;
+            this.PartNameInput.Location = new System.Drawing.Point(174, 71);
+            this.PartNameInput.Name = "PartNameInput";
+            this.PartNameInput.Size = new System.Drawing.Size(100, 22);
+            this.PartNameInput.TabIndex = 5;
             // 
             // label4
             // 
@@ -124,13 +125,13 @@ namespace C968
             this.label4.Text = "Inventory";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox3
+            // PartInventoryInput
             // 
-            this.textBox3.Location = new System.Drawing.Point(21, 127);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.PartInventoryInput.Location = new System.Drawing.Point(21, 127);
+            this.PartInventoryInput.Name = "PartInventoryInput";
+            this.PartInventoryInput.Size = new System.Drawing.Size(100, 22);
+            this.PartInventoryInput.TabIndex = 7;
+            this.PartInventoryInput.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label5
             // 
@@ -141,12 +142,12 @@ namespace C968
             this.label5.TabIndex = 10;
             this.label5.Text = "Price / Cost";
             // 
-            // textBox4
+            // PartPriceInput
             // 
-            this.textBox4.Location = new System.Drawing.Point(174, 127);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 9;
+            this.PartPriceInput.Location = new System.Drawing.Point(174, 127);
+            this.PartPriceInput.Name = "PartPriceInput";
+            this.PartPriceInput.Size = new System.Drawing.Size(100, 22);
+            this.PartPriceInput.TabIndex = 9;
             // 
             // label6
             // 
@@ -158,12 +159,12 @@ namespace C968
             this.label6.Text = "Min";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // textBox5
+            // PartMinInput
             // 
-            this.textBox5.Location = new System.Drawing.Point(21, 185);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 22);
-            this.textBox5.TabIndex = 11;
+            this.PartMinInput.Location = new System.Drawing.Point(21, 185);
+            this.PartMinInput.Name = "PartMinInput";
+            this.PartMinInput.Size = new System.Drawing.Size(100, 22);
+            this.PartMinInput.TabIndex = 11;
             // 
             // label7
             // 
@@ -174,71 +175,72 @@ namespace C968
             this.label7.TabIndex = 14;
             this.label7.Text = "Max";
             // 
-            // textBox6
+            // PartMaxInput
             // 
-            this.textBox6.Location = new System.Drawing.Point(174, 185);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 22);
-            this.textBox6.TabIndex = 13;
+            this.PartMaxInput.Location = new System.Drawing.Point(174, 185);
+            this.PartMaxInput.Name = "PartMaxInput";
+            this.PartMaxInput.Size = new System.Drawing.Size(100, 22);
+            this.PartMaxInput.TabIndex = 13;
             // 
-            // label8
+            // PartExtraLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(18, 223);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(190, 17);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Machine ID / Company Name";
+            this.PartExtraLabel.AutoSize = true;
+            this.PartExtraLabel.Location = new System.Drawing.Point(18, 223);
+            this.PartExtraLabel.Name = "PartExtraLabel";
+            this.PartExtraLabel.Size = new System.Drawing.Size(190, 17);
+            this.PartExtraLabel.TabIndex = 16;
+            this.PartExtraLabel.Text = "Machine ID / Company Name";
             // 
-            // textBox7
+            // PartExtraInput
             // 
-            this.textBox7.Location = new System.Drawing.Point(21, 243);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(253, 22);
-            this.textBox7.TabIndex = 15;
+            this.PartExtraInput.Location = new System.Drawing.Point(21, 243);
+            this.PartExtraInput.Name = "PartExtraInput";
+            this.PartExtraInput.Size = new System.Drawing.Size(253, 22);
+            this.PartExtraInput.TabIndex = 15;
             // 
-            // button1
+            // PartSave
             // 
-            this.button1.Location = new System.Drawing.Point(288, 322);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.PartSave.Location = new System.Drawing.Point(288, 322);
+            this.PartSave.Name = "PartSave";
+            this.PartSave.Size = new System.Drawing.Size(75, 23);
+            this.PartSave.TabIndex = 17;
+            this.PartSave.Text = "Save";
+            this.PartSave.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // PartExit
             // 
-            this.button2.Location = new System.Drawing.Point(199, 322);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Exit";
-            this.button2.UseVisualStyleBackColor = true;
+            this.PartExit.Location = new System.Drawing.Point(199, 322);
+            this.PartExit.Name = "PartExit";
+            this.PartExit.Size = new System.Drawing.Size(75, 23);
+            this.PartExit.TabIndex = 18;
+            this.PartExit.Text = "Exit";
+            this.PartExit.UseVisualStyleBackColor = true;
+            this.PartExit.Click += new System.EventHandler(this.PartExit_Click);
             // 
             // PartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 357);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.PartExit);
+            this.Controls.Add(this.PartSave);
+            this.Controls.Add(this.PartExtraLabel);
+            this.Controls.Add(this.PartExtraInput);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.PartMaxInput);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.PartMinInput);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.PartPriceInput);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.PartInventoryInput);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.PartNameInput);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.PartIdInput);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.Outsourced);
+            this.Controls.Add(this.InHouse);
             this.Name = "PartForm";
             this.Text = "PartsForm";
             this.ResumeLayout(false);
@@ -248,24 +250,24 @@ namespace C968
 
         #endregion
 
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.RadioButton InHouse;
+        private System.Windows.Forms.RadioButton Outsourced;
+        private System.Windows.Forms.TextBox PartIdInput;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox PartNameInput;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox PartInventoryInput;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox PartPriceInput;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox PartMinInput;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox PartMaxInput;
+        private System.Windows.Forms.Label PartExtraLabel;
+        private System.Windows.Forms.TextBox PartExtraInput;
+        private System.Windows.Forms.Button PartSave;
+        private System.Windows.Forms.Button PartExit;
         public System.Windows.Forms.Label label1;
     }
 }

@@ -36,5 +36,15 @@ namespace C968
         {
 
         }
+
+        private void PartExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

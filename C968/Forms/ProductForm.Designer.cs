@@ -42,8 +42,8 @@ namespace C968
             this.ProductMinInput = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.ProductMaxInput = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.PartsAvailableGrid = new System.Windows.Forms.DataGridView();
+            this.AddedPartsGrid = new System.Windows.Forms.DataGridView();
             this.PartsAddedButton = new System.Windows.Forms.Button();
             this.AddedPartsInput = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -54,8 +54,8 @@ namespace C968
             this.DeletePart = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.ProductCancelButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartsAvailableGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddedPartsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // ProductFormTitle
@@ -167,26 +167,26 @@ namespace C968
             this.ProductMaxInput.Size = new System.Drawing.Size(100, 22);
             this.ProductMaxInput.TabIndex = 15;
             // 
-            // dataGridView1
+            // PartsAvailableGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(252, 110);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(251, 245);
-            this.dataGridView1.TabIndex = 17;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.PartsAvailableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PartsAvailableGrid.Location = new System.Drawing.Point(252, 110);
+            this.PartsAvailableGrid.Name = "PartsAvailableGrid";
+            this.PartsAvailableGrid.RowHeadersWidth = 51;
+            this.PartsAvailableGrid.RowTemplate.Height = 24;
+            this.PartsAvailableGrid.Size = new System.Drawing.Size(251, 245);
+            this.PartsAvailableGrid.TabIndex = 17;
+            this.PartsAvailableGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // dataGridView2
+            // AddedPartsGrid
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(537, 110);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(251, 245);
-            this.dataGridView2.TabIndex = 18;
+            this.AddedPartsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AddedPartsGrid.Location = new System.Drawing.Point(537, 110);
+            this.AddedPartsGrid.Name = "AddedPartsGrid";
+            this.AddedPartsGrid.RowHeadersWidth = 51;
+            this.AddedPartsGrid.RowTemplate.Height = 24;
+            this.AddedPartsGrid.Size = new System.Drawing.Size(251, 245);
+            this.AddedPartsGrid.TabIndex = 18;
             // 
             // PartsAddedButton
             // 
@@ -273,6 +273,7 @@ namespace C968
             this.ProductCancelButton.TabIndex = 30;
             this.ProductCancelButton.Text = "Cancel";
             this.ProductCancelButton.UseVisualStyleBackColor = true;
+            this.ProductCancelButton.Click += new System.EventHandler(this.ProductCancelButton_Click);
             // 
             // ProductForm
             // 
@@ -289,8 +290,8 @@ namespace C968
             this.Controls.Add(this.label8);
             this.Controls.Add(this.PartsAddedButton);
             this.Controls.Add(this.AddedPartsInput);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.AddedPartsGrid);
+            this.Controls.Add(this.PartsAvailableGrid);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.ProductMaxInput);
             this.Controls.Add(this.label6);
@@ -307,8 +308,8 @@ namespace C968
             this.Name = "ProductForm";
             this.Text = "ProductForm";
             this.Load += new System.EventHandler(this.ProductForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartsAvailableGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddedPartsGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,8 +322,8 @@ namespace C968
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView PartsAvailableGrid;
+        private System.Windows.Forms.DataGridView AddedPartsGrid;
         private System.Windows.Forms.Button PartsAddedButton;
         private System.Windows.Forms.TextBox AddedPartsInput;
         private System.Windows.Forms.Label label8;
