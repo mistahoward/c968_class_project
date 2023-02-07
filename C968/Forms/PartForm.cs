@@ -48,7 +48,7 @@ namespace C968
             this.Close();
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void Outsource_CheckedChanged(object sender, EventArgs e)
         {
             PartExtraLabel.Text = "Company Name";
             outSourced = true;
@@ -89,6 +89,19 @@ namespace C968
                             Convert.ToInt32(PartMaxInput.Text),
                             Convert.ToInt32(PartMinInput.Text),
                             PartExtraInput.Text
+                        );
+                        Inventory.AddPart(partToAdd);
+                        this.Close();
+                    } else if (inHouse)
+                    {
+                        var partToAdd = new InHousePart (
+                            Convert.ToInt32(PartIdInput.Text),
+                            PartNameInput.Text,
+                            Convert.ToInt32(PartInStockInput.Text),
+                            Convert.ToDecimal(PartPriceInput.Text),
+                            Convert.ToInt32(PartMaxInput.Text),
+                            Convert.ToInt32(PartMinInput.Text),
+                            Convert.ToInt32(PartExtraInput.Text)
                         );
                         Inventory.AddPart(partToAdd);
                         this.Close();

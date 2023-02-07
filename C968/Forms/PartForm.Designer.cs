@@ -74,7 +74,7 @@ namespace C968
             this.Outsourced.TabStop = true;
             this.Outsourced.Text = "Outsourced";
             this.Outsourced.UseVisualStyleBackColor = true;
-            this.Outsourced.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.Outsourced.CheckedChanged += new System.EventHandler(this.Outsource_CheckedChanged);
             // 
             // label1
             // 

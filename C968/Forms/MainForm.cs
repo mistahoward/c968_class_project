@@ -13,8 +13,20 @@ namespace C968
 {
     public partial class MainForm : Form
     {
+        private static Part partSelected;
+        private static Product productSelected;
+
         public MainForm()
         {
+            var dummyPart1 = new OutsourcedPart(
+                             1,
+                            "Trencher",
+                            3,
+                            0.24,
+                            100,
+                            0,
+                            "Google"
+                        );
             InitializeComponent();
         }
 
@@ -24,7 +36,7 @@ namespace C968
             ProductsGrid.DataSource = Inventory.Products;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void PartsSearch_Click(object sender, EventArgs e)
         {
 
         }
@@ -34,7 +46,7 @@ namespace C968
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void AddPart_Click(object sender, EventArgs e)
         {
             PartForm partsForm = new PartForm();
             partsForm.adding = true;
@@ -42,27 +54,60 @@ namespace C968
             partsForm.PartSave.Text = "Add";
             partsForm.ShowDialog();
         }
+        private void ModifyPart_Click(object sender, EventArgs e)
+        {
+            PartForm partsForm = new PartForm();
+            partsForm.updating = true;
+            partsForm.label1.Text = "Modify Part";
+            partsForm.PartSave.Text = "Save";
+            partsForm.ShowDialog();
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        }
+        private void DeletePart_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void PartsGrid_Click(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+        }
+
+        private void AddProduct_Click(object sender, EventArgs e)
         {
             ProductForm productsForm = new ProductForm();
             productsForm.ProductFormTitle.Text = "Add Product";
             productsForm.ShowDialog();
         }
 
+        private void ModifyProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void ProductGrid_Click(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void DeleteProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void PartsSearchBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ProductSearchBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void DeletePart_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
