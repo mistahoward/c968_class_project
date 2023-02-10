@@ -23,32 +23,26 @@ namespace C968
             InHousePart,
             OutsourcedPart
         }
-        private int _selectedPartId;
-        private Part _selectedPart;
         private Operation _partOperation;
         private PartTypes _selectedPartType;
         
         public Operation PartOperation { get => _partOperation; set => _partOperation = value; }
         public PartTypes SelectedPartType { get => _selectedPartType; set => _selectedPartType = value; }
-        public int SelectedPartId { get => _selectedPartId; set => _selectedPartId = value; }
-        public Part SelectedPart { get => _selectedPart; set => _selectedPart = value; }
 
         public PartForm(Operation operation, int selectedPartId = 0)
         {
-            SelectedPartId = selectedPartId;
             PartOperation = operation;
             InitializeComponent();
             if (operation == Operation.updating)
             {
-                var selectedPartResult = Inventory.Parts.Where(p => p.PartId == selectedPartId);
-                SelectedPart = selectedPartResult.Single();
-                SelectedPartType = (PartTypes)Enum.Parse(typeof(PartTypes), SelectedPart.GetType().Name);
-                PartIdInput.Text = SelectedPart.PartId.ToString();
-                PartNameInput.Text = SelectedPart.Name;
-                PartInventoryInput.Text = SelectedPart.InStock.ToString();
-                PartPriceInput.Text = SelectedPart.Price.ToString();
-                PartMinInput.Text = SelectedPart.Min.ToString();
-                PartMaxInput.Text = SelectedPart.Max.ToString();
+                var selectedPart = Inventory.Parts.Where(p => p.PartId == selectedPartId).First();
+                SelectedPartType = (PartTypes)Enum.Parse(typeof(PartTypes), selectedPart.GetType().Name);
+                PartIdInput.Text = selectedPart.PartId.ToString();
+                PartNameInput.Text = selectedPart.Name;
+                PartInventoryInput.Text = selectedPart.InStock.ToString();
+                PartPriceInput.Text = selectedPart.Price.ToString();
+                PartMinInput.Text = selectedPart.Min.ToString();
+                PartMaxInput.Text = selectedPart.Max.ToString();
                 if (SelectedPartType == PartTypes.InHousePart)
                 {
                     //PartExtraInput.Text = SelectedPart.MachineId.ToString();
