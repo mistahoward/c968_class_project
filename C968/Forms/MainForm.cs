@@ -18,15 +18,44 @@ namespace C968
 
         public MainForm()
         {
-            var dummyPart1 = new OutsourcedPart(
-                             1,
-                            "Trencher",
-                            3,
-                            0.24,
-                            100,
-                            0,
-                            "Google"
-                        );
+            var dummyPart1 = new OutsourcedPart(1,
+                "Trencher",
+                3,
+                (decimal)0.24,
+                100,
+                0,
+                "Google");
+            var dummyPart2 = new OutsourcedPart(
+                 2,
+                "Liquidator",
+                4,
+                (decimal)0.44,
+                30,
+                4,
+                "Bing"
+            );
+            var dummyPart3 = new InHousePart(
+                 3,
+                "Energizer",
+                45,
+                (decimal)0.54,
+                50,
+                20,
+                00114544
+            );
+            var dummyPart4 = new InHousePart(
+                 4,
+                "Eater",
+                3,
+                (decimal)0.24,
+                100,
+                0,
+                55765120
+            );
+            Inventory.AddPart(dummyPart1);
+            Inventory.AddPart(dummyPart2);
+            Inventory.AddPart(dummyPart3);
+            Inventory.AddPart(dummyPart4);
             InitializeComponent();
         }
 
@@ -48,16 +77,16 @@ namespace C968
 
         private void AddPart_Click(object sender, EventArgs e)
         {
-            PartForm partsForm = new PartForm();
-            partsForm.adding = true;
+            PartForm partsForm = new PartForm(PartForm.Operation.adding);
             partsForm.label1.Text = "Add Part";
             partsForm.PartSave.Text = "Add";
             partsForm.ShowDialog();
         }
         private void ModifyPart_Click(object sender, EventArgs e)
         {
-            PartForm partsForm = new PartForm();
-            partsForm.updating = true;
+            PartForm partsForm = new PartForm(
+                PartForm.Operation.updating,
+                partSelected);
             partsForm.label1.Text = "Modify Part";
             partsForm.PartSave.Text = "Save";
             partsForm.ShowDialog();
@@ -65,12 +94,6 @@ namespace C968
         }
         private void DeletePart_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void PartsGrid_Click(object sender, DataGridViewCellEventArgs e)
-        {
-
 
         }
 
@@ -108,6 +131,11 @@ namespace C968
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void PartsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            partSelected = Inventory.Parts[e.RowIndex + 1];
         }
     }
 }

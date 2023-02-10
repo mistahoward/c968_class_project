@@ -81,14 +81,22 @@ namespace C968
             // 
             // PartsGrid
             // 
+            this.PartsGrid.AllowUserToAddRows = false;
+            this.PartsGrid.AllowUserToDeleteRows = false;
             this.PartsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PartsGrid.Location = new System.Drawing.Point(40, 65);
+            this.PartsGrid.MultiSelect = false;
             this.PartsGrid.Name = "PartsGrid";
+            this.PartsGrid.ReadOnly = true;
             this.PartsGrid.RowHeadersWidth = 51;
             this.PartsGrid.RowTemplate.Height = 24;
+            this.PartsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.PartsGrid.ShowCellErrors = false;
+            this.PartsGrid.ShowCellToolTips = false;
+            this.PartsGrid.ShowEditingIcon = false;
             this.PartsGrid.Size = new System.Drawing.Size(409, 262);
             this.PartsGrid.TabIndex = 7;
-            this.PartsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PartsGrid_Click);
+            this.PartsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PartsGrid_CellContentClick);
             // 
             // AddPart
             // 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace C968.Classes
 {
-    abstract class Part
+    public abstract class Part
     {
         private int _partId;
         private string _name;

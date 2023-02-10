@@ -13,13 +13,36 @@ namespace C968
 {
     public partial class PartForm : Form
     {
-        bool inHouse = false;
-        bool outSourced = false;
-        public bool updating = false;
-        public bool adding = false;
-
-        public PartForm()
+        public enum Operation
         {
+            adding,
+            updating
+        }
+        public enum PartTypes
+        {
+            inHouse,
+            outSourced
+        }
+        private Part _selectedPart;
+        private Operation _partOperation;
+        private PartTypes _selectedPartType;
+        
+        internal Part SelectedPart { get => _selectedPart; set => _selectedPart = value; }
+        public Operation PartOperation { get => _partOperation; set => _partOperation = value; }
+        public PartTypes SelectedPartType { get => _selectedPartType; set => _selectedPartType = value; }
+        public PartForm(Operation operation, Part selectedPart = null)
+        {
+            SelectedPart = selectedPart;
+            PartOperation = operation;
+            if (operation == Operation.updating)
+            {
+                PartIdInput.Text = SelectedPart.PartId.ToString();
+                PartNameInput.Text = SelectedPart.Name;
+                PartInventoryInput.Text = SelectedPart.InStock.ToString();
+                PartPriceInput.Text = SelectedPart.Price.ToString();
+                PartMinInput.Text = SelectedPart.Min.ToString();
+                PartMaxInput.Text = SelectedPart.Max.ToString();
+            }
             InitializeComponent();
         }
 
@@ -51,15 +74,13 @@ namespace C968
         private void Outsource_CheckedChanged(object sender, EventArgs e)
         {
             PartExtraLabel.Text = "Company Name";
-            outSourced = true;
-            inHouse = false;
+            SelectedPartType = PartTypes.outSourced;
         }
 
         private void InHouse_CheckedChanged(object sender, EventArgs e)
         {
             PartExtraLabel.Text = "Machine ID";
-            outSourced = false;
-            inHouse = true;
+            SelectedPartType = PartTypes.inHouse;
         }
 
         private void PartExtraLabel_Click(object sender, EventArgs e)
@@ -77,9 +98,9 @@ namespace C968
                 && !string.IsNullOrEmpty(PartInventoryInput.Text)
                 && !string.IsNullOrEmpty(PartExtraInput.Text))
             {
-                if (adding)
+                if (PartOperation == Operation.adding)
                 {
-                    if (outSourced)
+                    if (SelectedPartType == PartTypes.outSourced)
                     {
                         var partToAdd = new OutsourcedPart(
                             Convert.ToInt32(PartIdInput.Text), 
@@ -92,7 +113,7 @@ namespace C968
                         );
                         Inventory.AddPart(partToAdd);
                         this.Close();
-                    } else if (inHouse)
+                    } else if (SelectedPartType == PartTypes.inHouse)
                     {
                         var partToAdd = new InHousePart (
                             Convert.ToInt32(PartIdInput.Text),
@@ -109,7 +130,7 @@ namespace C968
                 }
             } else
             {
-                MessageBox.Show($"While trying to {(adding ? "add" : "modify")} the part, we found some missing values. Please check your inputs and try again.", "Missing Values",
+                MessageBox.Show($"While trying to {PartOperation} the part, we found some missing values. Please check your inputs and try again.", "Missing Values",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
