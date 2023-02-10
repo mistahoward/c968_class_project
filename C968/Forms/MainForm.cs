@@ -13,8 +13,8 @@ namespace C968
 {
     public partial class MainForm : Form
     {
-        private static Part partSelected;
-        private static Product productSelected;
+        private static int partSelectedId;
+        private static int productSelectedId;
 
         public MainForm()
         {
@@ -63,6 +63,8 @@ namespace C968
         {
             PartsGrid.DataSource = Inventory.Parts;
             ProductsGrid.DataSource = Inventory.Products;
+            PartsGrid.ClearSelection();
+            ProductsGrid.ClearSelection();
         }
 
         private void PartsSearch_Click(object sender, EventArgs e)
@@ -86,7 +88,7 @@ namespace C968
         {
             PartForm partsForm = new PartForm(
                 PartForm.Operation.updating,
-                partSelected);
+                partSelectedId);
             partsForm.label1.Text = "Modify Part";
             partsForm.PartSave.Text = "Save";
             partsForm.ShowDialog();
@@ -132,10 +134,10 @@ namespace C968
         {
             this.Close();
         }
-
-        private void PartsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void PartsGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            partSelected = Inventory.Parts[e.RowIndex + 1];
+            DataGridViewRow rowSelected = PartsGrid.CurrentRow;
+            partSelectedId = (int)rowSelected.Cells[0].Value;
         }
     }
 }

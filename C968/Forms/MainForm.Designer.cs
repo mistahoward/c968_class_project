@@ -96,7 +96,7 @@ namespace C968
             this.PartsGrid.ShowEditingIcon = false;
             this.PartsGrid.Size = new System.Drawing.Size(409, 262);
             this.PartsGrid.TabIndex = 7;
-            this.PartsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PartsGrid_CellContentClick);
+            this.PartsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PartsGrid_CellClick);
             // 
             // AddPart
             // 
@@ -166,9 +166,12 @@ namespace C968
             // 
             // ProductsGrid
             // 
+            this.ProductsGrid.AllowUserToAddRows = false;
+            this.ProductsGrid.AllowUserToDeleteRows = false;
             this.ProductsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductsGrid.Location = new System.Drawing.Point(521, 65);
             this.ProductsGrid.Name = "ProductsGrid";
+            this.ProductsGrid.ReadOnly = true;
             this.ProductsGrid.RowHeadersWidth = 51;
             this.ProductsGrid.RowTemplate.Height = 24;
             this.ProductsGrid.Size = new System.Drawing.Size(409, 262);
@@ -250,7 +253,6 @@ namespace C968
         private System.Windows.Forms.TextBox PartsSearchBox;
         private System.Windows.Forms.Button PartsSearchButton;
         internal System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView PartsGrid;
         private System.Windows.Forms.Button AddPart;
         private System.Windows.Forms.Button ModifyPart;
         private System.Windows.Forms.Button DeletePart;
@@ -262,6 +264,7 @@ namespace C968
         private System.Windows.Forms.Button ProductsSearchButton;
         private System.Windows.Forms.TextBox ProductSearchBox;
         private System.Windows.Forms.Button ExitButton;
+        public System.Windows.Forms.DataGridView PartsGrid;
     }
 }
 

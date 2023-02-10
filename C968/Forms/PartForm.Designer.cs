@@ -48,8 +48,6 @@ namespace C968
             this.PartExtraInput = new System.Windows.Forms.TextBox();
             this.PartSave = new System.Windows.Forms.Button();
             this.PartExit = new System.Windows.Forms.Button();
-            this.PartInStockInput = new System.Windows.Forms.TextBox();
-            this.InStock = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // InHouse
@@ -188,7 +186,7 @@ namespace C968
             // PartExtraLabel
             // 
             this.PartExtraLabel.AutoSize = true;
-            this.PartExtraLabel.Location = new System.Drawing.Point(173, 220);
+            this.PartExtraLabel.Location = new System.Drawing.Point(18, 221);
             this.PartExtraLabel.Name = "PartExtraLabel";
             this.PartExtraLabel.Size = new System.Drawing.Size(190, 17);
             this.PartExtraLabel.TabIndex = 16;
@@ -197,9 +195,9 @@ namespace C968
             // 
             // PartExtraInput
             // 
-            this.PartExtraInput.Location = new System.Drawing.Point(174, 240);
+            this.PartExtraInput.Location = new System.Drawing.Point(21, 240);
             this.PartExtraInput.Name = "PartExtraInput";
-            this.PartExtraInput.Size = new System.Drawing.Size(100, 22);
+            this.PartExtraInput.Size = new System.Drawing.Size(253, 22);
             this.PartExtraInput.TabIndex = 15;
             // 
             // PartSave
@@ -222,29 +220,11 @@ namespace C968
             this.PartExit.UseVisualStyleBackColor = true;
             this.PartExit.Click += new System.EventHandler(this.PartExit_Click);
             // 
-            // PartInStockInput
-            // 
-            this.PartInStockInput.Location = new System.Drawing.Point(21, 240);
-            this.PartInStockInput.Name = "PartInStockInput";
-            this.PartInStockInput.Size = new System.Drawing.Size(100, 22);
-            this.PartInStockInput.TabIndex = 19;
-            // 
-            // InStock
-            // 
-            this.InStock.AutoSize = true;
-            this.InStock.Location = new System.Drawing.Point(18, 220);
-            this.InStock.Name = "InStock";
-            this.InStock.Size = new System.Drawing.Size(54, 17);
-            this.InStock.TabIndex = 20;
-            this.InStock.Text = "InStock";
-            // 
             // PartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 333);
-            this.Controls.Add(this.InStock);
-            this.Controls.Add(this.PartInStockInput);
             this.Controls.Add(this.PartExit);
             this.Controls.Add(this.PartSave);
             this.Controls.Add(this.PartExtraLabel);
@@ -293,7 +273,5 @@ namespace C968
         private System.Windows.Forms.Button PartExit;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button PartSave;
-        private System.Windows.Forms.TextBox PartInStockInput;
-        private System.Windows.Forms.Label InStock;
     }
 }

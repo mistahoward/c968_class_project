@@ -20,30 +20,40 @@ namespace C968
         }
         public enum PartTypes
         {
-            inHouse,
-            outSourced
+            InHousePart,
+            OutsourcedPart
         }
+        private int _selectedPartId;
         private Part _selectedPart;
         private Operation _partOperation;
         private PartTypes _selectedPartType;
         
-        internal Part SelectedPart { get => _selectedPart; set => _selectedPart = value; }
         public Operation PartOperation { get => _partOperation; set => _partOperation = value; }
         public PartTypes SelectedPartType { get => _selectedPartType; set => _selectedPartType = value; }
-        public PartForm(Operation operation, Part selectedPart = null)
+        public int SelectedPartId { get => _selectedPartId; set => _selectedPartId = value; }
+        public Part SelectedPart { get => _selectedPart; set => _selectedPart = value; }
+
+        public PartForm(Operation operation, int selectedPartId = 0)
         {
-            SelectedPart = selectedPart;
+            SelectedPartId = selectedPartId;
             PartOperation = operation;
+            InitializeComponent();
             if (operation == Operation.updating)
             {
+                var selectedPartResult = Inventory.Parts.Where(p => p.PartId == selectedPartId);
+                SelectedPart = selectedPartResult.Single();
+                SelectedPartType = (PartTypes)Enum.Parse(typeof(PartTypes), SelectedPart.GetType().Name);
                 PartIdInput.Text = SelectedPart.PartId.ToString();
                 PartNameInput.Text = SelectedPart.Name;
                 PartInventoryInput.Text = SelectedPart.InStock.ToString();
                 PartPriceInput.Text = SelectedPart.Price.ToString();
                 PartMinInput.Text = SelectedPart.Min.ToString();
                 PartMaxInput.Text = SelectedPart.Max.ToString();
+                if (SelectedPartType == PartTypes.InHousePart)
+                {
+                    //PartExtraInput.Text = SelectedPart.MachineId.ToString();
+                }
             }
-            InitializeComponent();
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -74,13 +84,13 @@ namespace C968
         private void Outsource_CheckedChanged(object sender, EventArgs e)
         {
             PartExtraLabel.Text = "Company Name";
-            SelectedPartType = PartTypes.outSourced;
+            SelectedPartType = PartTypes.OutsourcedPart;
         }
 
         private void InHouse_CheckedChanged(object sender, EventArgs e)
         {
             PartExtraLabel.Text = "Machine ID";
-            SelectedPartType = PartTypes.inHouse;
+            SelectedPartType = PartTypes.InHousePart;
         }
 
         private void PartExtraLabel_Click(object sender, EventArgs e)
@@ -94,18 +104,18 @@ namespace C968
                 && !string.IsNullOrEmpty(PartPriceInput.Text)
                 && !string.IsNullOrEmpty(PartMaxInput.Text)
                 && !string.IsNullOrEmpty(PartMinInput.Text)
-                && !string.IsNullOrEmpty(PartInStockInput.Text)
+                && !string.IsNullOrEmpty(PartInventoryInput.Text)
                 && !string.IsNullOrEmpty(PartInventoryInput.Text)
                 && !string.IsNullOrEmpty(PartExtraInput.Text))
             {
                 if (PartOperation == Operation.adding)
                 {
-                    if (SelectedPartType == PartTypes.outSourced)
+                    if (SelectedPartType == PartTypes.OutsourcedPart)
                     {
                         var partToAdd = new OutsourcedPart(
                             Convert.ToInt32(PartIdInput.Text), 
                             PartNameInput.Text, 
-                            Convert.ToInt32(PartInStockInput.Text),
+                            Convert.ToInt32(PartInventoryInput.Text),
                             Convert.ToDecimal(PartPriceInput.Text), 
                             Convert.ToInt32(PartMaxInput.Text),
                             Convert.ToInt32(PartMinInput.Text),
@@ -113,12 +123,12 @@ namespace C968
                         );
                         Inventory.AddPart(partToAdd);
                         this.Close();
-                    } else if (SelectedPartType == PartTypes.inHouse)
+                    } else if (SelectedPartType == PartTypes.InHousePart)
                     {
                         var partToAdd = new InHousePart (
                             Convert.ToInt32(PartIdInput.Text),
                             PartNameInput.Text,
-                            Convert.ToInt32(PartInStockInput.Text),
+                            Convert.ToInt32(PartInventoryInput.Text),
                             Convert.ToDecimal(PartPriceInput.Text),
                             Convert.ToInt32(PartMaxInput.Text),
                             Convert.ToInt32(PartMinInput.Text),
