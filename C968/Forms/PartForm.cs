@@ -45,7 +45,12 @@ namespace C968
                 PartMaxInput.Text = selectedPart.Max.ToString();
                 if (SelectedPartType == PartTypes.InHousePart)
                 {
-                    //PartExtraInput.Text = SelectedPart.MachineId.ToString();
+                    var inHousePart = (InHousePart)selectedPart;
+                    PartExtraInput.Text = inHousePart.MachineId.ToString();
+                } else
+                {
+                    var outsourcedPart = (OutsourcedPart)selectedPart;
+                    PartExtraInput.Text = outsourcedPart.CompanyName;
                 }
             }
         }

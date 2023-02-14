@@ -48,7 +48,7 @@ namespace C968.Classes
         }
         public static Part LookupPart(int partIdToLookup)
         {
-            return (Part)Parts.Where(p => p.PartId == partIdToLookup);
+            return (Part)Parts.Where(p => p.PartId == partIdToLookup).Single();
         }
         public static void UpdatePart(int partdIdToUpdate, Part partInfo)
         {

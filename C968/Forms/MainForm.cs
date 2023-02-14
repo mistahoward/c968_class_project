@@ -96,7 +96,24 @@ namespace C968
         }
         private void DeletePart_Click(object sender, EventArgs e)
         {
-
+            if (partSelectedId > 0)
+            {
+                var confirmResult = MessageBox.Show("Are you sure you want to delete this item?", "Confirm", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    var partToDelete = Inventory.LookupPart(partSelectedId);
+                    Inventory.DeletePart(partToDelete);
+                }
+                else
+                {
+                    // don't delete
+                }
+            } else
+            {
+                MessageBox.Show("Please selet a part before attempting delete.", "No Part Selected",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void AddProduct_Click(object sender, EventArgs e)
