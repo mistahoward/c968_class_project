@@ -33,7 +33,6 @@ namespace C968.Classes
             Max = max;
             Min = min;
         }
-
         public void AddAssociatedPart(Part partToAdd)
         {
             AssociatedParts.Add(partToAdd);

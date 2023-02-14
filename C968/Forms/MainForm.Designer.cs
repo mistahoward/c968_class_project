@@ -55,6 +55,7 @@ namespace C968
             this.PartsSearchBox.Size = new System.Drawing.Size(206, 22);
             this.PartsSearchBox.TabIndex = 0;
             this.PartsSearchBox.TextChanged += new System.EventHandler(this.PartsSearchBox_TextChanged);
+            this.PartsSearchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PartsSearchBox_KeyDown);
             // 
             // PartsSearchButton
             // 

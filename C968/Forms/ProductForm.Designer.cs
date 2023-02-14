@@ -43,7 +43,7 @@ namespace C968
             this.label7 = new System.Windows.Forms.Label();
             this.ProductMaxInput = new System.Windows.Forms.TextBox();
             this.PartsAvailableGrid = new System.Windows.Forms.DataGridView();
-            this.AddedPartsGrid = new System.Windows.Forms.DataGridView();
+            this.PartsAddedGrid = new System.Windows.Forms.DataGridView();
             this.PartsAddedButton = new System.Windows.Forms.Button();
             this.AddedPartsInput = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@ namespace C968
             this.SaveButton = new System.Windows.Forms.Button();
             this.ProductCancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PartsAvailableGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AddedPartsGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartsAddedGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // ProductFormTitle
@@ -67,7 +67,6 @@ namespace C968
             this.ProductFormTitle.Size = new System.Drawing.Size(165, 20);
             this.ProductFormTitle.TabIndex = 0;
             this.ProductFormTitle.Text = "Modify / Add Product";
-            this.ProductFormTitle.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -141,7 +140,6 @@ namespace C968
             this.label6.Size = new System.Drawing.Size(30, 17);
             this.label6.TabIndex = 14;
             this.label6.Text = "Min";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // ProductMinInput
             // 
@@ -149,7 +147,6 @@ namespace C968
             this.ProductMinInput.Name = "ProductMinInput";
             this.ProductMinInput.Size = new System.Drawing.Size(100, 22);
             this.ProductMinInput.TabIndex = 13;
-            this.ProductMinInput.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // label7
             // 
@@ -169,45 +166,57 @@ namespace C968
             // 
             // PartsAvailableGrid
             // 
+            this.PartsAvailableGrid.AllowUserToAddRows = false;
+            this.PartsAvailableGrid.AllowUserToDeleteRows = false;
             this.PartsAvailableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PartsAvailableGrid.Location = new System.Drawing.Point(252, 110);
+            this.PartsAvailableGrid.Location = new System.Drawing.Point(252, 43);
+            this.PartsAvailableGrid.MultiSelect = false;
             this.PartsAvailableGrid.Name = "PartsAvailableGrid";
+            this.PartsAvailableGrid.ReadOnly = true;
             this.PartsAvailableGrid.RowHeadersWidth = 51;
             this.PartsAvailableGrid.RowTemplate.Height = 24;
-            this.PartsAvailableGrid.Size = new System.Drawing.Size(251, 245);
+            this.PartsAvailableGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.PartsAvailableGrid.Size = new System.Drawing.Size(536, 177);
             this.PartsAvailableGrid.TabIndex = 17;
-            this.PartsAvailableGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.PartsAvailableGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PartsAvailableGrid_CellClick);
             // 
-            // AddedPartsGrid
+            // PartsAddedGrid
             // 
-            this.AddedPartsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AddedPartsGrid.Location = new System.Drawing.Point(537, 110);
-            this.AddedPartsGrid.Name = "AddedPartsGrid";
-            this.AddedPartsGrid.RowHeadersWidth = 51;
-            this.AddedPartsGrid.RowTemplate.Height = 24;
-            this.AddedPartsGrid.Size = new System.Drawing.Size(251, 245);
-            this.AddedPartsGrid.TabIndex = 18;
+            this.PartsAddedGrid.AllowUserToAddRows = false;
+            this.PartsAddedGrid.AllowUserToDeleteRows = false;
+            this.PartsAddedGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PartsAddedGrid.Location = new System.Drawing.Point(252, 254);
+            this.PartsAddedGrid.MultiSelect = false;
+            this.PartsAddedGrid.Name = "PartsAddedGrid";
+            this.PartsAddedGrid.ReadOnly = true;
+            this.PartsAddedGrid.RowHeadersWidth = 51;
+            this.PartsAddedGrid.RowTemplate.Height = 24;
+            this.PartsAddedGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.PartsAddedGrid.Size = new System.Drawing.Size(536, 143);
+            this.PartsAddedGrid.TabIndex = 18;
             // 
             // PartsAddedButton
             // 
-            this.PartsAddedButton.Location = new System.Drawing.Point(713, 73);
+            this.PartsAddedButton.Location = new System.Drawing.Point(713, 223);
             this.PartsAddedButton.Name = "PartsAddedButton";
             this.PartsAddedButton.Size = new System.Drawing.Size(75, 23);
             this.PartsAddedButton.TabIndex = 22;
             this.PartsAddedButton.Text = "Search";
             this.PartsAddedButton.UseVisualStyleBackColor = true;
+            this.PartsAddedButton.Click += new System.EventHandler(this.PartsAddedButton_Click);
             // 
             // AddedPartsInput
             // 
-            this.AddedPartsInput.Location = new System.Drawing.Point(537, 74);
+            this.AddedPartsInput.Location = new System.Drawing.Point(537, 223);
             this.AddedPartsInput.Name = "AddedPartsInput";
             this.AddedPartsInput.Size = new System.Drawing.Size(170, 22);
             this.AddedPartsInput.TabIndex = 21;
+            this.AddedPartsInput.TextChanged += new System.EventHandler(this.AddedPartsInput_TextChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(252, 53);
+            this.label8.Location = new System.Drawing.Point(252, 13);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(152, 17);
             this.label8.TabIndex = 23;
@@ -216,7 +225,7 @@ namespace C968
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(534, 53);
+            this.label9.Location = new System.Drawing.Point(252, 223);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(86, 17);
             this.label9.TabIndex = 24;
@@ -224,32 +233,35 @@ namespace C968
             // 
             // PartsAvailableButton
             // 
-            this.PartsAvailableButton.Location = new System.Drawing.Point(431, 73);
+            this.PartsAvailableButton.Location = new System.Drawing.Point(713, 7);
             this.PartsAvailableButton.Name = "PartsAvailableButton";
             this.PartsAvailableButton.Size = new System.Drawing.Size(75, 23);
             this.PartsAvailableButton.TabIndex = 26;
             this.PartsAvailableButton.Text = "Search";
             this.PartsAvailableButton.UseVisualStyleBackColor = true;
+            this.PartsAvailableButton.Click += new System.EventHandler(this.PartsAvailableButton_Click);
             // 
             // PartsAvailableInput
             // 
-            this.PartsAvailableInput.Location = new System.Drawing.Point(255, 74);
+            this.PartsAvailableInput.Location = new System.Drawing.Point(537, 7);
             this.PartsAvailableInput.Name = "PartsAvailableInput";
             this.PartsAvailableInput.Size = new System.Drawing.Size(170, 22);
             this.PartsAvailableInput.TabIndex = 25;
+            this.PartsAvailableInput.TextChanged += new System.EventHandler(this.PartsAvailableInput_TextChanged);
             // 
             // AddPart
             // 
-            this.AddPart.Location = new System.Drawing.Point(428, 361);
+            this.AddPart.Location = new System.Drawing.Point(420, 7);
             this.AddPart.Name = "AddPart";
             this.AddPart.Size = new System.Drawing.Size(75, 23);
             this.AddPart.TabIndex = 27;
             this.AddPart.Text = "Add";
             this.AddPart.UseVisualStyleBackColor = true;
+            this.AddPart.Click += new System.EventHandler(this.AddPart_Click);
             // 
             // DeletePart
             // 
-            this.DeletePart.Location = new System.Drawing.Point(713, 361);
+            this.DeletePart.Location = new System.Drawing.Point(350, 223);
             this.DeletePart.Name = "DeletePart";
             this.DeletePart.Size = new System.Drawing.Size(75, 23);
             this.DeletePart.TabIndex = 28;
@@ -290,7 +302,7 @@ namespace C968
             this.Controls.Add(this.label8);
             this.Controls.Add(this.PartsAddedButton);
             this.Controls.Add(this.AddedPartsInput);
-            this.Controls.Add(this.AddedPartsGrid);
+            this.Controls.Add(this.PartsAddedGrid);
             this.Controls.Add(this.PartsAvailableGrid);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.ProductMaxInput);
@@ -309,7 +321,7 @@ namespace C968
             this.Text = "ProductForm";
             this.Load += new System.EventHandler(this.ProductForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PartsAvailableGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AddedPartsGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartsAddedGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,7 +335,7 @@ namespace C968
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView PartsAvailableGrid;
-        private System.Windows.Forms.DataGridView AddedPartsGrid;
+        private System.Windows.Forms.DataGridView PartsAddedGrid;
         private System.Windows.Forms.Button PartsAddedButton;
         private System.Windows.Forms.TextBox AddedPartsInput;
         private System.Windows.Forms.Label label8;

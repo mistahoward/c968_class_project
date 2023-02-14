@@ -15,6 +15,8 @@ namespace C968
     {
         private static int partSelectedId;
         private static int productSelectedId;
+        private static string partSearchText;
+        private static string productSearchText;
 
         public MainForm()
         {
@@ -69,7 +71,11 @@ namespace C968
 
         private void PartsSearch_Click(object sender, EventArgs e)
         {
-
+            if (partSearchText.Length > 0)
+            {
+                var partsWithMatchingName = Inventory.Parts.Where(p => p.Name.ToLower().Contains(partSearchText.ToLower())).ToList();
+                PartsGrid.DataSource = partsWithMatchingName;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -110,7 +116,7 @@ namespace C968
                 }
             } else
             {
-                MessageBox.Show("Please selet a part before attempting delete.", "No Part Selected",
+                MessageBox.Show("Please select a part before attempting delete.", "No Part Selected",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
@@ -140,12 +146,16 @@ namespace C968
 
         private void PartsSearchBox_TextChanged(object sender, EventArgs e)
         {
-
+            partSearchText = PartsSearchBox.Text;
+            if (partSearchText.Length <= 0)
+            {
+                PartsGrid.DataSource = Inventory.Parts;
+            }
         }
 
         private void ProductSearchBox_TextChanged(object sender, EventArgs e)
         {
-
+            productSearchText = ProductSearchBox.Text;
         }
         private void ExitButton_Click(object sender, EventArgs e)
         {
@@ -155,6 +165,14 @@ namespace C968
         {
             DataGridViewRow rowSelected = PartsGrid.CurrentRow;
             partSelectedId = (int)rowSelected.Cells[0].Value;
+        }
+
+        private void PartsSearchBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && partSearchText.Length > 0)
+            {
+                PartsSearchButton.PerformClick();
+            }
         }
     }
 }
