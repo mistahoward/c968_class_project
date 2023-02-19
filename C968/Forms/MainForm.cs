@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static C968.PartForm;
 
 namespace C968
 {
@@ -85,7 +86,7 @@ namespace C968
 
         private void AddPart_Click(object sender, EventArgs e)
         {
-            PartForm partsForm = new PartForm(PartForm.Operation.adding);
+            PartForm partsForm = new PartForm(Operation.adding);
             partsForm.label1.Text = "Add Part";
             partsForm.PartSave.Text = "Add";
             partsForm.ShowDialog();
@@ -93,7 +94,7 @@ namespace C968
         private void ModifyPart_Click(object sender, EventArgs e)
         {
             PartForm partsForm = new PartForm(
-                PartForm.Operation.updating,
+                Operation.updating,
                 partSelectedId);
             partsForm.label1.Text = "Modify Part";
             partsForm.PartSave.Text = "Save";
@@ -124,8 +125,9 @@ namespace C968
 
         private void AddProduct_Click(object sender, EventArgs e)
         {
-            ProductForm productsForm = new ProductForm();
+            ProductForm productsForm = new ProductForm(Operation.adding);
             productsForm.ProductFormTitle.Text = "Add Product";
+            productsForm.SaveButton.Text = "Add";
             productsForm.ShowDialog();
         }
 

@@ -12,7 +12,7 @@ namespace C968.Classes
         public static BindingList<Product> Products = new BindingList<Product>();
         public static BindingList<Part> Parts = new BindingList<Part>();
         
-        public void AddProduct(Product productToAdd)
+        public static void AddProduct(Product productToAdd)
         {
             Products.Add(productToAdd);
         }

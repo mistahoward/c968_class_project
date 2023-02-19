@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static C968.PartForm;
 
 namespace C968
 {
@@ -17,15 +18,22 @@ namespace C968
         private static string partsAddedSearch;
         private Part PartsAvailableSelected;
         private Part PartsAddedSelected;
+        private Operation _productOperation;
 
         private BindingList<Part> _productParts;
 
         public BindingList<Part> ProductParts { get => _productParts; set => _productParts = value; }
+        public Operation ProductOperation { get => _productOperation; set => _productOperation = value; }
 
-        public ProductForm()
+        public ProductForm(Operation operation, int selectedProductId = 0)
         {
+            ProductOperation = operation;
             ProductParts = new BindingList<Part>();
             InitializeComponent();
+            if (operation == Operation.updating)
+            {
+
+            }
         }
         private void ProductForm_Load(object sender, EventArgs e)
         {
@@ -107,6 +115,35 @@ namespace C968
             DataGridViewRow rowSelected = PartsAddedGrid.CurrentRow;
             var partId = (int)rowSelected.Cells[0].Value;
             PartsAddedSelected = Inventory.LookupPart(partId);
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(ProductIdInput.Text)
+                && !string.IsNullOrEmpty(ProductNameInput.Text)
+                && !string.IsNullOrEmpty(ProductInventoryInput.Text)
+                && !string.IsNullOrEmpty(ProductMaxInput.Text)
+                && !string.IsNullOrEmpty(ProductPriceInput.Text)
+                && !string.IsNullOrEmpty(ProductMinInput.Text))
+            {
+                if (ProductOperation == Operation.adding)
+                {
+                    var ProductToAdd = new Product(
+                        Convert.ToInt32(ProductIdInput.Text),
+                            ProductNameInput.Text,
+                            Convert.ToInt32(ProductInventoryInput.Text),
+                            Convert.ToDecimal(ProductPriceInput.Text),
+                            Convert.ToInt32(ProductMaxInput.Text),
+                            Convert.ToInt32(ProductMinInput.Text)
+                        );
+                    foreach(Part part in ProductParts)
+                    {
+                        ProductToAdd.AddAssociatedPart(part);
+                    }
+                    Inventory.AddProduct(ProductToAdd);
+                    this.Close();
+                }
+            }
         }
     }
 }

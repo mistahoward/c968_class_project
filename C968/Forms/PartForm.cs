@@ -104,7 +104,6 @@ namespace C968
                 && !string.IsNullOrEmpty(PartMaxInput.Text)
                 && !string.IsNullOrEmpty(PartMinInput.Text)
                 && !string.IsNullOrEmpty(PartInventoryInput.Text)
-                && !string.IsNullOrEmpty(PartInventoryInput.Text)
                 && !string.IsNullOrEmpty(PartExtraInput.Text))
             {
                 if (PartOperation == Operation.adding)

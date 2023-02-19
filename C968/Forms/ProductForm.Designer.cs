@@ -278,6 +278,7 @@ namespace C968
             this.SaveButton.TabIndex = 29;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // ProductCancelButton
             // 
@@ -346,7 +347,6 @@ namespace C968
         private System.Windows.Forms.TextBox PartsAvailableInput;
         private System.Windows.Forms.Button AddPart;
         private System.Windows.Forms.Button DeletePart;
-        private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button ProductCancelButton;
         public System.Windows.Forms.Label ProductFormTitle;
         public System.Windows.Forms.TextBox ProductIdInput;
@@ -355,5 +355,6 @@ namespace C968
         public System.Windows.Forms.TextBox ProductPriceInput;
         public System.Windows.Forms.TextBox ProductMinInput;
         public System.Windows.Forms.TextBox ProductMaxInput;
+        public System.Windows.Forms.Button SaveButton;
     }
 }
