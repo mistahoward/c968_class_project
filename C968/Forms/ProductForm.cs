@@ -50,7 +50,8 @@ namespace C968
 
         private void PartsAvailableButton_Click(object sender, EventArgs e)
         {
-            if (partsAvailableSearch.Length > 0)
+            PartsAvailableGrid.ClearSelection();
+            if (partsAvailableSearch?.Length > 0)
             {
                 var partsAvailableWithMatchingName = Inventory.Parts.Where(p => p.Name.ToLower().Contains(partsAvailableSearch.ToLower())).ToList();
                 PartsAvailableGrid.DataSource = partsAvailableWithMatchingName;
@@ -74,7 +75,7 @@ namespace C968
 
         private void AddedPartsInput_TextChanged(object sender, EventArgs e)
         {
-            partsAddedSearch = AddedPartsInput.Text;
+            partsAddedSearch = PartsAddedInput.Text;
             if (partsAddedSearch.Length <= 0)
             {
                 PartsAddedGrid.DataSource = ProductParts;
@@ -83,7 +84,12 @@ namespace C968
 
         private void PartsAddedButton_Click(object sender, EventArgs e)
         {
-
+            PartsAddedGrid.ClearSelection();
+            if (partsAddedSearch?.Length > 0)
+            {
+                var partsAddedWithmatchingName = ProductParts.Where(p => p.Name.ToLower().Contains(partsAddedSearch.ToLower())).ToList();
+                PartsAddedGrid.DataSource = partsAddedWithmatchingName;
+            }
         }
 
         private void DeletePart_Click(object sender, EventArgs e)

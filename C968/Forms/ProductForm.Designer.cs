@@ -44,11 +44,11 @@ namespace C968
             this.ProductMaxInput = new System.Windows.Forms.TextBox();
             this.PartsAvailableGrid = new System.Windows.Forms.DataGridView();
             this.PartsAddedGrid = new System.Windows.Forms.DataGridView();
-            this.PartsAddedButton = new System.Windows.Forms.Button();
-            this.AddedPartsInput = new System.Windows.Forms.TextBox();
+            this.PartsAddedSearchButton = new System.Windows.Forms.Button();
+            this.PartsAddedInput = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.PartsAvailableButton = new System.Windows.Forms.Button();
+            this.PartsAvailableSearchButton = new System.Windows.Forms.Button();
             this.PartsAvailableInput = new System.Windows.Forms.TextBox();
             this.AddPart = new System.Windows.Forms.Button();
             this.DeletePart = new System.Windows.Forms.Button();
@@ -196,23 +196,23 @@ namespace C968
             this.PartsAddedGrid.TabIndex = 18;
             this.PartsAddedGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PartsAddedGrid_CellClick);
             // 
-            // PartsAddedButton
+            // PartsAddedSearchButton
             // 
-            this.PartsAddedButton.Location = new System.Drawing.Point(713, 228);
-            this.PartsAddedButton.Name = "PartsAddedButton";
-            this.PartsAddedButton.Size = new System.Drawing.Size(75, 23);
-            this.PartsAddedButton.TabIndex = 22;
-            this.PartsAddedButton.Text = "Search";
-            this.PartsAddedButton.UseVisualStyleBackColor = true;
-            this.PartsAddedButton.Click += new System.EventHandler(this.PartsAddedButton_Click);
+            this.PartsAddedSearchButton.Location = new System.Drawing.Point(713, 228);
+            this.PartsAddedSearchButton.Name = "PartsAddedSearchButton";
+            this.PartsAddedSearchButton.Size = new System.Drawing.Size(75, 23);
+            this.PartsAddedSearchButton.TabIndex = 22;
+            this.PartsAddedSearchButton.Text = "Search";
+            this.PartsAddedSearchButton.UseVisualStyleBackColor = true;
+            this.PartsAddedSearchButton.Click += new System.EventHandler(this.PartsAddedButton_Click);
             // 
-            // AddedPartsInput
+            // PartsAddedInput
             // 
-            this.AddedPartsInput.Location = new System.Drawing.Point(537, 229);
-            this.AddedPartsInput.Name = "AddedPartsInput";
-            this.AddedPartsInput.Size = new System.Drawing.Size(170, 22);
-            this.AddedPartsInput.TabIndex = 21;
-            this.AddedPartsInput.TextChanged += new System.EventHandler(this.AddedPartsInput_TextChanged);
+            this.PartsAddedInput.Location = new System.Drawing.Point(537, 229);
+            this.PartsAddedInput.Name = "PartsAddedInput";
+            this.PartsAddedInput.Size = new System.Drawing.Size(170, 22);
+            this.PartsAddedInput.TabIndex = 21;
+            this.PartsAddedInput.TextChanged += new System.EventHandler(this.AddedPartsInput_TextChanged);
             // 
             // label8
             // 
@@ -232,15 +232,15 @@ namespace C968
             this.label9.TabIndex = 24;
             this.label9.Text = "Added Parts";
             // 
-            // PartsAvailableButton
+            // PartsAvailableSearchButton
             // 
-            this.PartsAvailableButton.Location = new System.Drawing.Point(713, 16);
-            this.PartsAvailableButton.Name = "PartsAvailableButton";
-            this.PartsAvailableButton.Size = new System.Drawing.Size(75, 23);
-            this.PartsAvailableButton.TabIndex = 26;
-            this.PartsAvailableButton.Text = "Search";
-            this.PartsAvailableButton.UseVisualStyleBackColor = true;
-            this.PartsAvailableButton.Click += new System.EventHandler(this.PartsAvailableButton_Click);
+            this.PartsAvailableSearchButton.Location = new System.Drawing.Point(713, 16);
+            this.PartsAvailableSearchButton.Name = "PartsAvailableSearchButton";
+            this.PartsAvailableSearchButton.Size = new System.Drawing.Size(75, 23);
+            this.PartsAvailableSearchButton.TabIndex = 26;
+            this.PartsAvailableSearchButton.Text = "Search";
+            this.PartsAvailableSearchButton.UseVisualStyleBackColor = true;
+            this.PartsAvailableSearchButton.Click += new System.EventHandler(this.PartsAvailableButton_Click);
             // 
             // PartsAvailableInput
             // 
@@ -298,12 +298,12 @@ namespace C968
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.DeletePart);
             this.Controls.Add(this.AddPart);
-            this.Controls.Add(this.PartsAvailableButton);
+            this.Controls.Add(this.PartsAvailableSearchButton);
             this.Controls.Add(this.PartsAvailableInput);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.PartsAddedButton);
-            this.Controls.Add(this.AddedPartsInput);
+            this.Controls.Add(this.PartsAddedSearchButton);
+            this.Controls.Add(this.PartsAddedInput);
             this.Controls.Add(this.PartsAddedGrid);
             this.Controls.Add(this.PartsAvailableGrid);
             this.Controls.Add(this.label7);
@@ -338,11 +338,11 @@ namespace C968
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView PartsAvailableGrid;
         private System.Windows.Forms.DataGridView PartsAddedGrid;
-        private System.Windows.Forms.Button PartsAddedButton;
-        private System.Windows.Forms.TextBox AddedPartsInput;
+        private System.Windows.Forms.Button PartsAddedSearchButton;
+        private System.Windows.Forms.TextBox PartsAddedInput;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button PartsAvailableButton;
+        private System.Windows.Forms.Button PartsAvailableSearchButton;
         private System.Windows.Forms.TextBox PartsAvailableInput;
         private System.Windows.Forms.Button AddPart;
         private System.Windows.Forms.Button DeletePart;
