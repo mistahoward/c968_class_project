@@ -82,7 +82,6 @@ namespace C968
             this.PartFormTitle.Size = new System.Drawing.Size(108, 17);
             this.PartFormTitle.TabIndex = 2;
             this.PartFormTitle.Text = "Add/Modify Part";
-            this.PartFormTitle.Click += new System.EventHandler(this.label1_Click);
             // 
             // PartIdInput
             // 
@@ -124,7 +123,6 @@ namespace C968
             this.label4.Size = new System.Drawing.Size(66, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "Inventory";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // PartInventoryInput
             // 
@@ -132,7 +130,6 @@ namespace C968
             this.PartInventoryInput.Name = "PartInventoryInput";
             this.PartInventoryInput.Size = new System.Drawing.Size(100, 22);
             this.PartInventoryInput.TabIndex = 7;
-            this.PartInventoryInput.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label5
             // 
@@ -158,7 +155,6 @@ namespace C968
             this.label6.Size = new System.Drawing.Size(30, 17);
             this.label6.TabIndex = 12;
             this.label6.Text = "Min";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // PartMinInput
             // 
@@ -246,7 +242,6 @@ namespace C968
             this.Controls.Add(this.InHouse);
             this.Name = "PartForm";
             this.Text = "PartsForm";
-            this.Load += new System.EventHandler(this.PartForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
