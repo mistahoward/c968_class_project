@@ -85,5 +85,22 @@ namespace C968
         {
 
         }
+
+        private void DeletePart_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(PartsAddedSelected.Name))
+            {
+                ProductParts.Remove(PartsAddedSelected);
+                PartsAvailableGrid.ClearSelection();
+                PartsAddedGrid.ClearSelection();
+            }
+        }
+
+        private void PartsAddedGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow rowSelected = PartsAddedGrid.CurrentRow;
+            var partId = (int)rowSelected.Cells[0].Value;
+            PartsAddedSelected = Inventory.LookupPart(partId);
+        }
     }
 }

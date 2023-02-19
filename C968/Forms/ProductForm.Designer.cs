@@ -194,10 +194,11 @@ namespace C968
             this.PartsAddedGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.PartsAddedGrid.Size = new System.Drawing.Size(536, 143);
             this.PartsAddedGrid.TabIndex = 18;
+            this.PartsAddedGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PartsAddedGrid_CellClick);
             // 
             // PartsAddedButton
             // 
-            this.PartsAddedButton.Location = new System.Drawing.Point(713, 223);
+            this.PartsAddedButton.Location = new System.Drawing.Point(713, 228);
             this.PartsAddedButton.Name = "PartsAddedButton";
             this.PartsAddedButton.Size = new System.Drawing.Size(75, 23);
             this.PartsAddedButton.TabIndex = 22;
@@ -207,7 +208,7 @@ namespace C968
             // 
             // AddedPartsInput
             // 
-            this.AddedPartsInput.Location = new System.Drawing.Point(537, 223);
+            this.AddedPartsInput.Location = new System.Drawing.Point(537, 229);
             this.AddedPartsInput.Name = "AddedPartsInput";
             this.AddedPartsInput.Size = new System.Drawing.Size(170, 22);
             this.AddedPartsInput.TabIndex = 21;
@@ -216,7 +217,7 @@ namespace C968
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(252, 13);
+            this.label8.Location = new System.Drawing.Point(252, 16);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(152, 17);
             this.label8.TabIndex = 23;
@@ -225,7 +226,7 @@ namespace C968
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(252, 223);
+            this.label9.Location = new System.Drawing.Point(252, 232);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(86, 17);
             this.label9.TabIndex = 24;
@@ -233,7 +234,7 @@ namespace C968
             // 
             // PartsAvailableButton
             // 
-            this.PartsAvailableButton.Location = new System.Drawing.Point(713, 7);
+            this.PartsAvailableButton.Location = new System.Drawing.Point(713, 16);
             this.PartsAvailableButton.Name = "PartsAvailableButton";
             this.PartsAvailableButton.Size = new System.Drawing.Size(75, 23);
             this.PartsAvailableButton.TabIndex = 26;
@@ -243,7 +244,7 @@ namespace C968
             // 
             // PartsAvailableInput
             // 
-            this.PartsAvailableInput.Location = new System.Drawing.Point(537, 7);
+            this.PartsAvailableInput.Location = new System.Drawing.Point(537, 16);
             this.PartsAvailableInput.Name = "PartsAvailableInput";
             this.PartsAvailableInput.Size = new System.Drawing.Size(170, 22);
             this.PartsAvailableInput.TabIndex = 25;
@@ -251,7 +252,7 @@ namespace C968
             // 
             // AddPart
             // 
-            this.AddPart.Location = new System.Drawing.Point(420, 7);
+            this.AddPart.Location = new System.Drawing.Point(420, 14);
             this.AddPart.Name = "AddPart";
             this.AddPart.Size = new System.Drawing.Size(75, 23);
             this.AddPart.TabIndex = 27;
@@ -261,12 +262,13 @@ namespace C968
             // 
             // DeletePart
             // 
-            this.DeletePart.Location = new System.Drawing.Point(350, 223);
+            this.DeletePart.Location = new System.Drawing.Point(344, 226);
             this.DeletePart.Name = "DeletePart";
             this.DeletePart.Size = new System.Drawing.Size(75, 23);
             this.DeletePart.TabIndex = 28;
             this.DeletePart.Text = "Delete";
             this.DeletePart.UseVisualStyleBackColor = true;
+            this.DeletePart.Click += new System.EventHandler(this.DeletePart_Click);
             // 
             // SaveButton
             // 
