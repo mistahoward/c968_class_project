@@ -24,7 +24,7 @@ namespace C968.Classes
         }
         public static Product LookupProduct(int productIdToLookup)
         {
-            return (Product)Products.Where(p => p.ProductId == productIdToLookup);
+            return (Product)Products.Where(p => p.ProductId == productIdToLookup).Single();
         }
         public static void UpdateProduct(int productIdToUpdate, Product productInfo)
         {

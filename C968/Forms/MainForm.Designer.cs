@@ -171,13 +171,17 @@ namespace C968
             this.ProductsGrid.AllowUserToDeleteRows = false;
             this.ProductsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductsGrid.Location = new System.Drawing.Point(521, 65);
+            this.ProductsGrid.MultiSelect = false;
             this.ProductsGrid.Name = "ProductsGrid";
             this.ProductsGrid.ReadOnly = true;
             this.ProductsGrid.RowHeadersWidth = 51;
             this.ProductsGrid.RowTemplate.Height = 24;
+            this.ProductsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ProductsGrid.ShowCellErrors = false;
             this.ProductsGrid.Size = new System.Drawing.Size(409, 262);
             this.ProductsGrid.TabIndex = 14;
-            this.ProductsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductGrid_Click);
+            this.ProductsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductsGrid_CellClick);
+            this.ProductsGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.ProductsGrid_DataBindingComplete);
             // 
             // label2
             // 
@@ -260,12 +264,12 @@ namespace C968
         private System.Windows.Forms.Button DeleteProduct;
         private System.Windows.Forms.Button ModifyProduct;
         private System.Windows.Forms.Button AddProduct;
-        private System.Windows.Forms.DataGridView ProductsGrid;
         internal System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button ProductsSearchButton;
         private System.Windows.Forms.TextBox ProductSearchBox;
         private System.Windows.Forms.Button ExitButton;
         public System.Windows.Forms.DataGridView PartsGrid;
+        public System.Windows.Forms.DataGridView ProductsGrid;
     }
 }
 

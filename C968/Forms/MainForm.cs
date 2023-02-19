@@ -59,6 +59,17 @@ namespace C968
             Inventory.AddPart(dummyPart2);
             Inventory.AddPart(dummyPart3);
             Inventory.AddPart(dummyPart4);
+
+            var dummyProduct1 = new Product(1, "Dummy Product 1", 0, (decimal)3.02, 100, 0);
+            dummyProduct1.AddAssociatedPart(dummyPart1);
+
+            var dummyProduct2 = new Product(2, "Dummy Product 2", 100, (decimal)78.2, 100, 0);
+            dummyProduct2.AddAssociatedPart(dummyPart1);
+            dummyProduct2.AddAssociatedPart(dummyPart4);
+
+            Inventory.AddProduct(dummyProduct1);
+            Inventory.AddProduct(dummyProduct2);
+
             InitializeComponent();
         }
 
@@ -93,12 +104,18 @@ namespace C968
         }
         private void ModifyPart_Click(object sender, EventArgs e)
         {
-            PartForm partsForm = new PartForm(
-                Operation.updating,
-                partSelectedId);
-            partsForm.label1.Text = "Modify Part";
-            partsForm.PartSave.Text = "Save";
-            partsForm.ShowDialog();
+            if (partSelectedId > 0)
+            {
+                PartForm partsForm = new PartForm(
+             Operation.updating,
+             partSelectedId);
+                partsForm.label1.Text = "Modify Part";
+                partsForm.PartSave.Text = "Save";
+                partsForm.ShowDialog();
+            } else
+            {
+                // select part first dialogue
+            }
 
         }
         private void DeletePart_Click(object sender, EventArgs e)
@@ -110,10 +127,6 @@ namespace C968
                 {
                     var partToDelete = Inventory.LookupPart(partSelectedId);
                     Inventory.DeletePart(partToDelete);
-                }
-                else
-                {
-                    // don't delete
                 }
             } else
             {
@@ -130,14 +143,19 @@ namespace C968
             productsForm.SaveButton.Text = "Add";
             productsForm.ShowDialog();
         }
-
         private void ModifyProduct_Click(object sender, EventArgs e)
         {
-
-        }
-        private void ProductGrid_Click(object sender, DataGridViewCellEventArgs e)
-        {
-
+            if (productSelectedId > 0)
+            {
+                ProductForm productsForm = new ProductForm(Operation.updating, productSelectedId);
+                productsForm.ProductFormTitle.Text = "Modify Product";
+                productsForm.SaveButton.Text = "Save";
+                productsForm.ShowDialog();
+            } else
+            {
+                // select product first dialogue
+            }
+            
         }
 
         private void DeleteProduct_Click(object sender, EventArgs e)
@@ -175,6 +193,17 @@ namespace C968
             {
                 PartsSearchButton.PerformClick();
             }
+        }
+
+        private void ProductsGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow rowSelected = ProductsGrid.CurrentRow;
+            productSelectedId = (int)rowSelected.Cells[0].Value;
+        }
+
+        private void ProductsGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            ProductsGrid.ClearSelection();
         }
     }
 }

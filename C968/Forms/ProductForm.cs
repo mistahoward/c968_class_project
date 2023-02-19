@@ -20,10 +20,13 @@ namespace C968
         private Part PartsAddedSelected;
         private Operation _productOperation;
 
+        private Product _selectedProduct;
+
         private BindingList<Part> _productParts;
 
         public BindingList<Part> ProductParts { get => _productParts; set => _productParts = value; }
         public Operation ProductOperation { get => _productOperation; set => _productOperation = value; }
+        internal Product SelectedProduct { get => _selectedProduct; set => _selectedProduct = value; }
 
         public ProductForm(Operation operation, int selectedProductId = 0)
         {
@@ -32,7 +35,17 @@ namespace C968
             InitializeComponent();
             if (operation == Operation.updating)
             {
-
+                SelectedProduct = Inventory.LookupProduct(selectedProductId);
+                ProductIdInput.Text = SelectedProduct.ProductId.ToString();
+                ProductNameInput.Text = SelectedProduct.Name;
+                ProductInventoryInput.Text = SelectedProduct.InStock.ToString();
+                ProductPriceInput.Text = SelectedProduct.Price.ToString();
+                ProductMinInput.Text = SelectedProduct.Min.ToString();
+                ProductMaxInput.Text = SelectedProduct.Max.ToString();
+                foreach(Part part in SelectedProduct.AssociatedParts)
+                {
+                    ProductParts.Add(part);
+                }
             }
         }
         private void ProductForm_Load(object sender, EventArgs e)
@@ -40,6 +53,7 @@ namespace C968
             PartsAvailableGrid.DataSource = Inventory.Parts;
             PartsAddedGrid.DataSource = ProductParts;
             PartsAvailableGrid.ClearSelection();
+            PartsAddedGrid.ClearSelection();
         }
 
         private void ProductCancelButton_Click(object sender, EventArgs e)
@@ -73,9 +87,14 @@ namespace C968
         }
         private void AddPart_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(PartsAvailableSelected.Name))
+            if (!String.IsNullOrEmpty(PartsAvailableSelected?.Name))
             {
                 ProductParts.Add(PartsAvailableSelected);
+                if(ProductOperation == Operation.updating)
+                {
+                    SelectedProduct.AddAssociatedPart(PartsAvailableSelected);
+                }
+                PartsAvailableSelected = null;
                 PartsAvailableGrid.ClearSelection();
                 PartsAddedGrid.ClearSelection();
             }
@@ -102,9 +121,14 @@ namespace C968
 
         private void DeletePart_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(PartsAddedSelected.Name))
+            if (!String.IsNullOrEmpty(PartsAddedSelected?.Name))
             {
                 ProductParts.Remove(PartsAddedSelected);
+                if (ProductOperation == Operation.updating)
+                {
+                    SelectedProduct.RemoveAssociatedPart(PartsAddedSelected.PartId);
+                }
+                PartsAddedSelected = null;
                 PartsAvailableGrid.ClearSelection();
                 PartsAddedGrid.ClearSelection();
             }
@@ -141,6 +165,16 @@ namespace C968
                         ProductToAdd.AddAssociatedPart(part);
                     }
                     Inventory.AddProduct(ProductToAdd);
+                    this.Close();
+                } else
+                {
+                    SelectedProduct.ProductId = Convert.ToInt32(ProductIdInput.Text);
+                    SelectedProduct.Name = ProductNameInput.Text;
+                    SelectedProduct.InStock = Convert.ToInt32(ProductInventoryInput.Text);
+                    SelectedProduct.Price = Convert.ToDecimal(ProductPriceInput.Text);
+                    SelectedProduct.Min = Convert.ToInt32(ProductMinInput.Text);
+                    SelectedProduct.Max = Convert.ToInt32(ProductMaxInput.Text);
+                    Inventory.UpdateProduct(SelectedProduct.ProductId, SelectedProduct);
                     this.Close();
                 }
             }

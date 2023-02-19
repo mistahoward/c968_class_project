@@ -35,7 +35,7 @@ namespace C968
             InitializeComponent();
             if (operation == Operation.updating)
             {
-                var selectedPart = Inventory.Parts.Where(p => p.PartId == selectedPartId).First();
+                var selectedPart = Inventory.LookupPart(selectedPartId);
                 SelectedPartType = (PartTypes)Enum.Parse(typeof(PartTypes), selectedPart.GetType().Name);
                 PartIdInput.Text = selectedPart.PartId.ToString();
                 PartNameInput.Text = selectedPart.Name;
