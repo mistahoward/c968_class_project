@@ -83,7 +83,7 @@ namespace C968
 
         private void PartsSearch_Click(object sender, EventArgs e)
         {
-            if (partSearchText.Length > 0)
+            if (partSearchText?.Length > 0)
             {
                 var partsWithMatchingName = Inventory.Parts.Where(p => p.Name.ToLower().Contains(partSearchText.ToLower())).ToList();
                 PartsGrid.DataSource = partsWithMatchingName;
@@ -114,7 +114,8 @@ namespace C968
                 partsForm.ShowDialog();
             } else
             {
-                // select part first dialogue
+                MessageBox.Show("Please select a part before attempting modification.", "No Part Selected",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -153,7 +154,8 @@ namespace C968
                 productsForm.ShowDialog();
             } else
             {
-                // select product first dialogue
+                MessageBox.Show("Please select a product before attempting modification.", "No Product Selected",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
@@ -184,7 +186,7 @@ namespace C968
         private void PartsSearchBox_TextChanged(object sender, EventArgs e)
         {
             partSearchText = PartsSearchBox.Text;
-            if (partSearchText.Length <= 0)
+            if (partSearchText?.Length <= 0)
             {
                 PartsGrid.DataSource = Inventory.Parts;
             }
@@ -193,6 +195,10 @@ namespace C968
         private void ProductSearchBox_TextChanged(object sender, EventArgs e)
         {
             productSearchText = ProductSearchBox.Text;
+            if (productSearchText?.Length <= 0)
+            {
+                ProductsGrid.DataSource = Inventory.Products;
+            }
         }
         private void ExitButton_Click(object sender, EventArgs e)
         {
@@ -206,7 +212,7 @@ namespace C968
 
         private void PartsSearchBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && partSearchText.Length > 0)
+            if (e.KeyCode == Keys.Enter && partSearchText?.Length > 0)
             {
                 PartsSearchButton.PerformClick();
             }
@@ -221,6 +227,15 @@ namespace C968
         private void ProductsGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ProductsGrid.ClearSelection();
+        }
+
+        private void ProductsSearchButton_Click(object sender, EventArgs e)
+        {
+            if (productSearchText?.Length > 0)
+            {
+                var productsWithMatchingNames = Inventory.Products.Where(p => p.Name.ToLower().Contains(productSearchText.ToLower())).ToList();
+                PartsGrid.DataSource = productsWithMatchingNames;
+            }
         }
     }
 }

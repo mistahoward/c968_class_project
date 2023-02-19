@@ -203,6 +203,7 @@ namespace C968
             this.ProductsSearchButton.TabIndex = 12;
             this.ProductsSearchButton.Text = "Search";
             this.ProductsSearchButton.UseVisualStyleBackColor = true;
+            this.ProductsSearchButton.Click += new System.EventHandler(this.ProductsSearchButton_Click);
             // 
             // ProductSearchBox
             // 
