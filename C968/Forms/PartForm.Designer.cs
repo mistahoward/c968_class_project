@@ -31,7 +31,7 @@ namespace C968
         {
             this.InHouse = new System.Windows.Forms.RadioButton();
             this.Outsourced = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.PartFormTitle = new System.Windows.Forms.Label();
             this.PartIdInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@ namespace C968
             this.PartMaxInput = new System.Windows.Forms.TextBox();
             this.PartExtraLabel = new System.Windows.Forms.Label();
             this.PartExtraInput = new System.Windows.Forms.TextBox();
-            this.PartSave = new System.Windows.Forms.Button();
+            this.SaveButton = new System.Windows.Forms.Button();
             this.PartExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -74,15 +74,15 @@ namespace C968
             this.Outsourced.UseVisualStyleBackColor = true;
             this.Outsourced.CheckedChanged += new System.EventHandler(this.Outsource_CheckedChanged);
             // 
-            // label1
+            // PartFormTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Add/Modify Part";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.PartFormTitle.AutoSize = true;
+            this.PartFormTitle.Location = new System.Drawing.Point(13, 13);
+            this.PartFormTitle.Name = "PartFormTitle";
+            this.PartFormTitle.Size = new System.Drawing.Size(108, 17);
+            this.PartFormTitle.TabIndex = 2;
+            this.PartFormTitle.Text = "Add/Modify Part";
+            this.PartFormTitle.Click += new System.EventHandler(this.label1_Click);
             // 
             // PartIdInput
             // 
@@ -200,15 +200,15 @@ namespace C968
             this.PartExtraInput.Size = new System.Drawing.Size(253, 22);
             this.PartExtraInput.TabIndex = 15;
             // 
-            // PartSave
+            // SaveButton
             // 
-            this.PartSave.Location = new System.Drawing.Point(288, 297);
-            this.PartSave.Name = "PartSave";
-            this.PartSave.Size = new System.Drawing.Size(75, 23);
-            this.PartSave.TabIndex = 17;
-            this.PartSave.Text = "Save";
-            this.PartSave.UseVisualStyleBackColor = true;
-            this.PartSave.Click += new System.EventHandler(this.PartSave_Click);
+            this.SaveButton.Location = new System.Drawing.Point(288, 297);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.TabIndex = 17;
+            this.SaveButton.Text = "Save";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.PartSave_Click);
             // 
             // PartExit
             // 
@@ -226,7 +226,7 @@ namespace C968
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 333);
             this.Controls.Add(this.PartExit);
-            this.Controls.Add(this.PartSave);
+            this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.PartExtraLabel);
             this.Controls.Add(this.PartExtraInput);
             this.Controls.Add(this.label7);
@@ -241,7 +241,7 @@ namespace C968
             this.Controls.Add(this.PartNameInput);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PartIdInput);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.PartFormTitle);
             this.Controls.Add(this.Outsourced);
             this.Controls.Add(this.InHouse);
             this.Name = "PartForm";
@@ -271,7 +271,7 @@ namespace C968
         private System.Windows.Forms.Label PartExtraLabel;
         private System.Windows.Forms.TextBox PartExtraInput;
         private System.Windows.Forms.Button PartExit;
-        public System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Button PartSave;
+        public System.Windows.Forms.Label PartFormTitle;
+        public System.Windows.Forms.Button SaveButton;
     }
 }

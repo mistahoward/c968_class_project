@@ -78,7 +78,6 @@ namespace C968
             this.label1.TabIndex = 2;
             this.label1.Text = "Parts";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // PartsGrid
             // 
@@ -212,6 +211,7 @@ namespace C968
             this.ProductSearchBox.Size = new System.Drawing.Size(206, 22);
             this.ProductSearchBox.TabIndex = 11;
             this.ProductSearchBox.TextChanged += new System.EventHandler(this.ProductSearchBox_TextChanged);
+            this.ProductSearchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProductSearchBox_KeyDown);
             // 
             // ExitButton
             // 
