@@ -160,10 +160,27 @@ namespace C968
 
         private void DeleteProduct_Click(object sender, EventArgs e)
         {
+            if (productSelectedId > 0)
+            {
+                var selectedProduct = Inventory.LookupProduct(productSelectedId);
+                var associatedParts = selectedProduct.AssociatedParts;
+                if (associatedParts.Count <= 0)
+                {
+                    Inventory.RemoveProduct(productSelectedId);
+                }
+                else
+                {
+                    MessageBox.Show("Please remove all parts from selected product before deleting.", "Product Has Parts Associated",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a product before attempting delete.", "No Product Selected",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
-
-
         private void PartsSearchBox_TextChanged(object sender, EventArgs e)
         {
             partSearchText = PartsSearchBox.Text;

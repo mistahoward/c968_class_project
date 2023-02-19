@@ -16,7 +16,7 @@ namespace C968.Classes
         {
             Products.Add(productToAdd);
         }
-        public bool RemoveProduct(int productIdToRemove)
+        public static bool RemoveProduct(int productIdToRemove)
         {
             var productToRemove = LookupProduct(productIdToRemove);
             bool removeResult = Products.Remove(productToRemove);
