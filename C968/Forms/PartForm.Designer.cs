@@ -29,6 +29,7 @@ namespace C968
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.InHouse = new System.Windows.Forms.RadioButton();
             this.Outsourced = new System.Windows.Forms.RadioButton();
             this.PartFormTitle = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@ namespace C968
             this.PartExtraInput = new System.Windows.Forms.TextBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.PartExit = new System.Windows.Forms.Button();
+            this.pfep = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.pfep)).BeginInit();
             this.SuspendLayout();
             // 
             // InHouse
@@ -89,6 +92,7 @@ namespace C968
             this.PartIdInput.Name = "PartIdInput";
             this.PartIdInput.Size = new System.Drawing.Size(100, 22);
             this.PartIdInput.TabIndex = 3;
+            this.PartIdInput.Validating += new System.ComponentModel.CancelEventHandler(this.PartIdInput_Validating);
             // 
             // label2
             // 
@@ -130,6 +134,7 @@ namespace C968
             this.PartInventoryInput.Name = "PartInventoryInput";
             this.PartInventoryInput.Size = new System.Drawing.Size(100, 22);
             this.PartInventoryInput.TabIndex = 7;
+            this.PartInventoryInput.Validating += new System.ComponentModel.CancelEventHandler(this.PartInventoryInput_Validating);
             // 
             // label5
             // 
@@ -146,6 +151,7 @@ namespace C968
             this.PartPriceInput.Name = "PartPriceInput";
             this.PartPriceInput.Size = new System.Drawing.Size(100, 22);
             this.PartPriceInput.TabIndex = 9;
+            this.PartPriceInput.Validating += new System.ComponentModel.CancelEventHandler(this.PartPriceInput_Validating);
             // 
             // label6
             // 
@@ -162,6 +168,7 @@ namespace C968
             this.PartMinInput.Name = "PartMinInput";
             this.PartMinInput.Size = new System.Drawing.Size(100, 22);
             this.PartMinInput.TabIndex = 11;
+            this.PartMinInput.Validating += new System.ComponentModel.CancelEventHandler(this.PartMinInput_Validating);
             // 
             // label7
             // 
@@ -178,6 +185,7 @@ namespace C968
             this.PartMaxInput.Name = "PartMaxInput";
             this.PartMaxInput.Size = new System.Drawing.Size(100, 22);
             this.PartMaxInput.TabIndex = 13;
+            this.PartMaxInput.Validating += new System.ComponentModel.CancelEventHandler(this.PartMaxInput_Validating);
             // 
             // PartExtraLabel
             // 
@@ -195,6 +203,7 @@ namespace C968
             this.PartExtraInput.Name = "PartExtraInput";
             this.PartExtraInput.Size = new System.Drawing.Size(253, 22);
             this.PartExtraInput.TabIndex = 15;
+            this.PartExtraInput.Validating += new System.ComponentModel.CancelEventHandler(this.PartExtraInput_Validating);
             // 
             // SaveButton
             // 
@@ -215,6 +224,10 @@ namespace C968
             this.PartExit.Text = "Exit";
             this.PartExit.UseVisualStyleBackColor = true;
             this.PartExit.Click += new System.EventHandler(this.PartExit_Click);
+            // 
+            // pfep
+            // 
+            this.pfep.ContainerControl = this;
             // 
             // PartForm
             // 
@@ -242,6 +255,7 @@ namespace C968
             this.Controls.Add(this.InHouse);
             this.Name = "PartForm";
             this.Text = "PartsForm";
+            ((System.ComponentModel.ISupportInitialize)(this.pfep)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,5 +282,6 @@ namespace C968
         private System.Windows.Forms.Button PartExit;
         public System.Windows.Forms.Label PartFormTitle;
         public System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.ErrorProvider pfep;
     }
 }

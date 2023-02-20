@@ -121,5 +121,107 @@ namespace C968
             this.Close();
         }
 
+        private void PartIdInput_Validating(object sender, CancelEventArgs e)
+        {
+            bool isValid = Int32.TryParse(PartIdInput.Text, out int requestedNumber);
+            if (!isValid || requestedNumber == 0)
+            {
+                e.Cancel = true;
+                PartIdInput.Focus();
+                {
+                    pfep.SetError(PartIdInput, "ID must be a number that is not zero");
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+                pfep.SetError(PartIdInput, "");
+            }
+        }
+
+        private void PartInventoryInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Int32.TryParse(PartInventoryInput.Text, out _))
+            {
+                e.Cancel = true;
+                PartInventoryInput.Focus();
+                {
+                    pfep.SetError(PartInventoryInput, "Inventory must be a number");
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+                pfep.SetError(PartInventoryInput, "");
+            }
+        }
+
+        private void PartPriceInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Decimal.TryParse(PartPriceInput.Text, out _))
+            {
+                e.Cancel = true;
+                PartPriceInput.Focus();
+                {
+                    pfep.SetError(PartPriceInput, "Price must be a decimal");
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+                pfep.SetError(PartPriceInput, "");
+            }
+        }
+
+        private void PartMinInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Int32.TryParse(PartMinInput.Text, out _))
+            {
+                e.Cancel = true;
+                PartMinInput.Focus();
+                {
+                    pfep.SetError(PartMinInput, "Min stock must be a number");
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+                pfep.SetError(PartMinInput, "");
+            }
+        }
+
+        private void PartMaxInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Int32.TryParse(PartMaxInput.Text, out _))
+            {
+                e.Cancel = true;
+                PartMaxInput.Focus();
+                {
+                    pfep.SetError(PartMaxInput, "Max stock must be a number");
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+                pfep.SetError(PartMaxInput, "");
+            }
+        }
+
+        private void PartExtraInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Int32.TryParse(PartExtraInput.Text, out _) && SelectedPartType == PartTypes.InHousePart)
+            {
+                e.Cancel = true;
+                PartExtraInput.Focus();
+                {
+                    pfep.SetError(PartExtraInput, "Machine ID must be a number");
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+                pfep.SetError(PartExtraInput, "");
+            }
+        }
     }
 }
