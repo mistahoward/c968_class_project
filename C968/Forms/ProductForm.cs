@@ -150,15 +150,30 @@ namespace C968
                 && !string.IsNullOrEmpty(ProductPriceInput.Text)
                 && !string.IsNullOrEmpty(ProductMinInput.Text))
             {
+                int min = Convert.ToInt32(ProductMinInput.Text);
+                int max = Convert.ToInt32(ProductMaxInput.Text);
+                int inventory = Convert.ToInt32(ProductInventoryInput.Text);
+                if (min > max)
+                {
+                    MessageBox.Show("Minimum stock cannot be larger than maximum stock.", "Incorrect Values",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (min <= inventory && inventory >= max)
+                {
+                    MessageBox.Show("Inventory has to be between min and max stock values", "Incorrect Values",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (ProductOperation == Operation.adding)
                 {
                     var ProductToAdd = new Product(
                         Convert.ToInt32(ProductIdInput.Text),
                             ProductNameInput.Text,
-                            Convert.ToInt32(ProductInventoryInput.Text),
+                            inventory,
                             Convert.ToDecimal(ProductPriceInput.Text),
-                            Convert.ToInt32(ProductMaxInput.Text),
-                            Convert.ToInt32(ProductMinInput.Text)
+                            max,
+                            min
                         );
                     foreach(Part part in ProductParts)
                     {
@@ -170,13 +185,99 @@ namespace C968
                 {
                     SelectedProduct.ProductId = Convert.ToInt32(ProductIdInput.Text);
                     SelectedProduct.Name = ProductNameInput.Text;
-                    SelectedProduct.InStock = Convert.ToInt32(ProductInventoryInput.Text);
+                    SelectedProduct.InStock = inventory;
                     SelectedProduct.Price = Convert.ToDecimal(ProductPriceInput.Text);
-                    SelectedProduct.Min = Convert.ToInt32(ProductMinInput.Text);
-                    SelectedProduct.Max = Convert.ToInt32(ProductMaxInput.Text);
+                    SelectedProduct.Min = min;
+                    SelectedProduct.Max = max;
                     Inventory.UpdateProduct(SelectedProduct.ProductId, SelectedProduct);
                     this.Close();
                 }
+            }
+        }
+
+        private void ProductIdInput_Validating(object sender, CancelEventArgs e)
+        {
+            bool isValid = Int32.TryParse(ProductIdInput.Text, out int requestedNumber);
+            if (!isValid || requestedNumber == 0)
+            {
+                e.Cancel = true;
+                ProductIdInput.Focus();
+                {
+                    pfep.SetError(ProductIdInput, "ID must be a number that is not zero");
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+                pfep.SetError(ProductIdInput, "");
+            }
+        }
+
+        private void ProductInventoryInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Int32.TryParse(ProductInventoryInput.Text, out _))
+            {
+                e.Cancel = true;
+                ProductInventoryInput.Focus();
+                {
+                    pfep.SetError(ProductInventoryInput, "Inventory must be a number");
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+                pfep.SetError(ProductInventoryInput, "");
+            }
+        }
+
+        private void ProductPriceInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Decimal.TryParse(ProductPriceInput.Text, out _))
+            {
+                e.Cancel = true;
+                ProductPriceInput.Focus();
+                {
+                    pfep.SetError(ProductPriceInput, "Price must be a decimal");
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+                pfep.SetError(ProductPriceInput, "");
+            }
+        }
+
+        private void ProductMinInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Int32.TryParse(ProductMinInput.Text, out _))
+            {
+                e.Cancel = true;
+                ProductMinInput.Focus();
+                {
+                    pfep.SetError(ProductMinInput, "Min stock must be a number");
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+                pfep.SetError(ProductMinInput, "");
+            }
+        }
+
+        private void ProductMaxInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Int32.TryParse(ProductMaxInput.Text, out _))
+            {
+                e.Cancel = true;
+                ProductMaxInput.Focus();
+                {
+                    pfep.SetError(ProductMaxInput, "Max stock must be a number");
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+                pfep.SetError(ProductMaxInput, "");
             }
         }
     }

@@ -29,6 +29,7 @@ namespace C968
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ProductFormTitle = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ProductIdInput = new System.Windows.Forms.TextBox();
@@ -54,8 +55,10 @@ namespace C968
             this.DeletePart = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.ProductCancelButton = new System.Windows.Forms.Button();
+            this.pfep = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PartsAvailableGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartsAddedGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pfep)).BeginInit();
             this.SuspendLayout();
             // 
             // ProductFormTitle
@@ -83,6 +86,7 @@ namespace C968
             this.ProductIdInput.Name = "ProductIdInput";
             this.ProductIdInput.Size = new System.Drawing.Size(100, 22);
             this.ProductIdInput.TabIndex = 5;
+            this.ProductIdInput.Validating += new System.ComponentModel.CancelEventHandler(this.ProductIdInput_Validating);
             // 
             // label3
             // 
@@ -115,6 +119,7 @@ namespace C968
             this.ProductInventoryInput.Name = "ProductInventoryInput";
             this.ProductInventoryInput.Size = new System.Drawing.Size(100, 22);
             this.ProductInventoryInput.TabIndex = 9;
+            this.ProductInventoryInput.Validating += new System.ComponentModel.CancelEventHandler(this.ProductInventoryInput_Validating);
             // 
             // label5
             // 
@@ -131,6 +136,7 @@ namespace C968
             this.ProductPriceInput.Name = "ProductPriceInput";
             this.ProductPriceInput.Size = new System.Drawing.Size(100, 22);
             this.ProductPriceInput.TabIndex = 11;
+            this.ProductPriceInput.Validating += new System.ComponentModel.CancelEventHandler(this.ProductPriceInput_Validating);
             // 
             // label6
             // 
@@ -147,6 +153,7 @@ namespace C968
             this.ProductMinInput.Name = "ProductMinInput";
             this.ProductMinInput.Size = new System.Drawing.Size(100, 22);
             this.ProductMinInput.TabIndex = 13;
+            this.ProductMinInput.Validating += new System.ComponentModel.CancelEventHandler(this.ProductMinInput_Validating);
             // 
             // label7
             // 
@@ -163,6 +170,7 @@ namespace C968
             this.ProductMaxInput.Name = "ProductMaxInput";
             this.ProductMaxInput.Size = new System.Drawing.Size(100, 22);
             this.ProductMaxInput.TabIndex = 15;
+            this.ProductMaxInput.Validating += new System.ComponentModel.CancelEventHandler(this.ProductMaxInput_Validating);
             // 
             // PartsAvailableGrid
             // 
@@ -290,6 +298,10 @@ namespace C968
             this.ProductCancelButton.UseVisualStyleBackColor = true;
             this.ProductCancelButton.Click += new System.EventHandler(this.ProductCancelButton_Click);
             // 
+            // pfep
+            // 
+            this.pfep.ContainerControl = this;
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -325,6 +337,7 @@ namespace C968
             this.Load += new System.EventHandler(this.ProductForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PartsAvailableGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartsAddedGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pfep)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,5 +369,6 @@ namespace C968
         public System.Windows.Forms.TextBox ProductMinInput;
         public System.Windows.Forms.TextBox ProductMaxInput;
         public System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.ErrorProvider pfep;
     }
 }
