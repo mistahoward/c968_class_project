@@ -25,7 +25,6 @@ namespace C968
         }
         private Operation _partOperation;
         private PartTypes _selectedPartType;
-        
         public Operation PartOperation { get => _partOperation; set => _partOperation = value; }
         public PartTypes SelectedPartType { get => _selectedPartType; set => _selectedPartType = value; }
 
@@ -80,6 +79,21 @@ namespace C968
                 && !string.IsNullOrEmpty(PartInventoryInput.Text)
                 && !string.IsNullOrEmpty(PartExtraInput.Text))
             {
+                int min = Convert.ToInt32(PartMinInput.Text);
+                int max = Convert.ToInt32(PartMaxInput.Text);
+                int inventory = Convert.ToInt32(PartInventoryInput.Text);
+                if (min > max)
+                {
+                    MessageBox.Show("Minimum stock cannot be larger than maximum stock.", "Incorrect Values",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (min <= inventory && inventory >= max)
+                {
+                    MessageBox.Show("Inventory has to be between min and max stock values", "Incorrect Values",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (PartOperation == Operation.adding)
                 {
                     if (SelectedPartType == PartTypes.OutsourcedPart)
@@ -87,10 +101,10 @@ namespace C968
                         var partToAdd = new OutsourcedPart(
                             Convert.ToInt32(PartIdInput.Text), 
                             PartNameInput.Text, 
-                            Convert.ToInt32(PartInventoryInput.Text),
+                            inventory,
                             Convert.ToDecimal(PartPriceInput.Text), 
-                            Convert.ToInt32(PartMaxInput.Text),
-                            Convert.ToInt32(PartMinInput.Text),
+                            max,
+                            min,
                             PartExtraInput.Text
                         );
                         Inventory.AddPart(partToAdd);
@@ -100,10 +114,10 @@ namespace C968
                         var partToAdd = new InHousePart (
                             Convert.ToInt32(PartIdInput.Text),
                             PartNameInput.Text,
-                            Convert.ToInt32(PartInventoryInput.Text),
+                            inventory,
                             Convert.ToDecimal(PartPriceInput.Text),
-                            Convert.ToInt32(PartMaxInput.Text),
-                            Convert.ToInt32(PartMinInput.Text),
+                            max,
+                            min,
                             Convert.ToInt32(PartExtraInput.Text)
                         );
                         Inventory.AddPart(partToAdd);
