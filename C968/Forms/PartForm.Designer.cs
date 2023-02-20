@@ -195,7 +195,6 @@ namespace C968
             this.PartExtraLabel.Size = new System.Drawing.Size(190, 17);
             this.PartExtraLabel.TabIndex = 16;
             this.PartExtraLabel.Text = "Machine ID / Company Name";
-            this.PartExtraLabel.Click += new System.EventHandler(this.PartExtraLabel_Click);
             // 
             // PartExtraInput
             // 

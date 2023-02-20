@@ -30,11 +30,13 @@ namespace C968
 
         public ProductForm(Operation operation, int selectedProductId = 0)
         {
+            // product form constructor, using product parts as a list of "added parts"
             ProductOperation = operation;
             ProductParts = new BindingList<Part>();
             InitializeComponent();
             if (operation == Operation.updating)
             {
+                // setting fields based off existing part
                 SelectedProduct = Inventory.LookupProduct(selectedProductId);
                 ProductIdInput.Text = SelectedProduct.ProductId.ToString();
                 ProductNameInput.Text = SelectedProduct.Name;
@@ -42,6 +44,7 @@ namespace C968
                 ProductPriceInput.Text = SelectedProduct.Price.ToString();
                 ProductMinInput.Text = SelectedProduct.Min.ToString();
                 ProductMaxInput.Text = SelectedProduct.Max.ToString();
+                // add each part to product parts
                 foreach(Part part in SelectedProduct.AssociatedParts)
                 {
                     ProductParts.Add(part);
@@ -50,6 +53,7 @@ namespace C968
         }
         private void ProductForm_Load(object sender, EventArgs e)
         {
+            // binding, clear selections to make row selection explicit
             PartsAvailableGrid.DataSource = Inventory.Parts;
             PartsAddedGrid.DataSource = ProductParts;
             PartsAvailableGrid.ClearSelection();
@@ -63,6 +67,7 @@ namespace C968
 
         private void PartsAvailableInput_TextChanged(object sender, EventArgs e)
         {
+            // same search methodology as main screen
             partsAvailableSearch = PartsAvailableInput.Text;
             if (partsAvailableSearch.Length <= 0)
             {
@@ -75,25 +80,31 @@ namespace C968
             PartsAvailableGrid.ClearSelection();
             if (partsAvailableSearch?.Length > 0)
             {
-                var partsAvailableWithMatchingName = Inventory.Parts.Where(p => p.Name.ToLower().Contains(partsAvailableSearch.ToLower())).ToList();
+                var partsAvailableWithMatchingName = Inventory.Parts
+                    .Where(p => p.Name.ToLower().Contains(partsAvailableSearch.ToLower())).ToList();
                 PartsAvailableGrid.DataSource = partsAvailableWithMatchingName;
             }
         }
         private void PartsAvailableGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // same methodology as parts
             DataGridViewRow rowSelected = PartsAvailableGrid.CurrentRow;
             var partId = (int)rowSelected.Cells[0].Value;
             PartsAvailableSelected = Inventory.LookupPart(partId);
         }
         private void AddPart_Click(object sender, EventArgs e)
         {
+            // adding part to product, check if one has been selected first and foremost
             if (!String.IsNullOrEmpty(PartsAvailableSelected?.Name))
             {
+                // add to product parts
                 ProductParts.Add(PartsAvailableSelected);
                 if(ProductOperation == Operation.updating)
                 {
+                    // if updating, add it to th eactual product
                     SelectedProduct.AddAssociatedPart(PartsAvailableSelected);
                 }
+                // clear selection
                 PartsAvailableSelected = null;
                 PartsAvailableGrid.ClearSelection();
                 PartsAddedGrid.ClearSelection();
@@ -114,13 +125,15 @@ namespace C968
             PartsAddedGrid.ClearSelection();
             if (partsAddedSearch?.Length > 0)
             {
-                var partsAddedWithmatchingName = ProductParts.Where(p => p.Name.ToLower().Contains(partsAddedSearch.ToLower())).ToList();
+                var partsAddedWithmatchingName = ProductParts
+                    .Where(p => p.Name.ToLower().Contains(partsAddedSearch.ToLower())).ToList();
                 PartsAddedGrid.DataSource = partsAddedWithmatchingName;
             }
         }
 
         private void DeletePart_Click(object sender, EventArgs e)
         {
+            // same method as above, just removing
             if (!String.IsNullOrEmpty(PartsAddedSelected?.Name))
             {
                 ProductParts.Remove(PartsAddedSelected);
@@ -143,6 +156,7 @@ namespace C968
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            // field null and empty validation
             if (!string.IsNullOrEmpty(ProductIdInput.Text)
                 && !string.IsNullOrEmpty(ProductNameInput.Text)
                 && !string.IsNullOrEmpty(ProductInventoryInput.Text)
@@ -153,6 +167,7 @@ namespace C968
                 int min = Convert.ToInt32(ProductMinInput.Text);
                 int max = Convert.ToInt32(ProductMaxInput.Text);
                 int inventory = Convert.ToInt32(ProductInventoryInput.Text);
+                // inventory validation
                 if (min > max)
                 {
                     MessageBox.Show("Minimum stock cannot be larger than maximum stock.", "Incorrect Values",
@@ -167,6 +182,7 @@ namespace C968
                 }
                 if (ProductOperation == Operation.adding)
                 {
+                    // product constructor
                     var ProductToAdd = new Product(
                         Convert.ToInt32(ProductIdInput.Text),
                             ProductNameInput.Text,
@@ -175,14 +191,17 @@ namespace C968
                             max,
                             min
                         );
+                    // for each part in product parts... add associated part
                     foreach(Part part in ProductParts)
                     {
                         ProductToAdd.AddAssociatedPart(part);
                     }
+                    // add product, dismiss dialogue
                     Inventory.AddProduct(ProductToAdd);
                     this.Close();
                 } else
                 {
+                    // update product otherwise
                     SelectedProduct.ProductId = Convert.ToInt32(ProductIdInput.Text);
                     SelectedProduct.Name = ProductNameInput.Text;
                     SelectedProduct.InStock = inventory;
@@ -194,7 +213,7 @@ namespace C968
                 }
             }
         }
-
+        // form validation
         private void ProductIdInput_Validating(object sender, CancelEventArgs e)
         {
             bool isValid = Int32.TryParse(ProductIdInput.Text, out int requestedNumber);

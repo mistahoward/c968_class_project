@@ -30,10 +30,12 @@ namespace C968
 
         public PartForm(Operation operation, int selectedPartId = 0)
         {
+            // Part form constructor - use the enum to change functionality
             PartOperation = operation;
             InitializeComponent();
             if (operation == Operation.updating)
             {
+                // grab the selected part and part type in order to change funcionality (extrainput field)
                 var selectedPart = Inventory.LookupPart(selectedPartId);
                 SelectedPartType = (PartTypes)Enum.Parse(typeof(PartTypes), selectedPart.GetType().Name);
                 PartIdInput.Text = selectedPart.PartId.ToString();
@@ -65,12 +67,9 @@ namespace C968
             SelectedPartType = PartTypes.InHousePart;
         }
 
-        private void PartExtraLabel_Click(object sender, EventArgs e)
-        {
-        }
-
         private void PartSave_Click(object sender, EventArgs e)
         {
+            // check if fields aren't empty
             if (!string.IsNullOrEmpty(PartIdInput.Text)
                 && !string.IsNullOrEmpty(PartNameInput.Text)
                 && !string.IsNullOrEmpty(PartPriceInput.Text)
@@ -82,6 +81,7 @@ namespace C968
                 int min = Convert.ToInt32(PartMinInput.Text);
                 int max = Convert.ToInt32(PartMaxInput.Text);
                 int inventory = Convert.ToInt32(PartInventoryInput.Text);
+                // inventory validations
                 if (min > max)
                 {
                     MessageBox.Show("Minimum stock cannot be larger than maximum stock.", "Incorrect Values",
@@ -98,6 +98,7 @@ namespace C968
                 {
                     if (SelectedPartType == PartTypes.OutsourcedPart)
                     {
+                        // constructor for outsourced parts, add to inventory, close
                         var partToAdd = new OutsourcedPart(
                             Convert.ToInt32(PartIdInput.Text), 
                             PartNameInput.Text, 
@@ -111,6 +112,7 @@ namespace C968
                         this.Close();
                     } else if (SelectedPartType == PartTypes.InHousePart)
                     {
+                        // consturctor for inhouse part, add to inventory, close 
                         var partToAdd = new InHousePart (
                             Convert.ToInt32(PartIdInput.Text),
                             PartNameInput.Text,
@@ -126,6 +128,7 @@ namespace C968
                 }
             } else
             {
+                // otherwise, show popup saying values were missing
                 MessageBox.Show($"While trying to {PartOperation} the part, we found some missing values. Please check your inputs and try again.", "Missing Values",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -134,7 +137,7 @@ namespace C968
         {
             this.Close();
         }
-
+        // validation for fields - parsing, showing erors for the fields
         private void PartIdInput_Validating(object sender, CancelEventArgs e)
         {
             bool isValid = Int32.TryParse(PartIdInput.Text, out int requestedNumber);
