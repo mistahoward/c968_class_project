@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static C968.PartForm;
 
 namespace C968.Classes
 {
@@ -53,12 +54,20 @@ namespace C968.Classes
         public static void UpdatePart(int partdIdToUpdate, Part partInfo)
         {
             var partToUpdate = LookupPart(partdIdToUpdate);
-            partToUpdate.PartId = partInfo.PartId;
-            partToUpdate.Name = partInfo.Name;
-            partToUpdate.Price = partInfo.Price;
-            partToUpdate.Min = partInfo.Min;
-            partToUpdate.Max = partInfo.Max;
+            Inventory.DeletePart(partToUpdate);
+            var partType = (PartTypes)Enum.Parse(typeof(PartTypes), partInfo.GetType().Name);
+            if (partType == PartTypes.InHousePart)
+            {
+                var inHouseWorkingPart = (InHousePart)partInfo;
+                var newInHousePart = new InHousePart(partInfo.PartId, partInfo.Name, partInfo.InStock, partInfo.Price, partInfo.Max, partInfo.Min,
+                    inHouseWorkingPart.MachineId);
+                Inventory.AddPart(newInHousePart);
+            } else
+            {
+                var outsourcedWorkingPart = (OutsourcedPart)partInfo;
+                var outsourcedPart = new OutsourcedPart(outsourcedWorkingPart.PartId, outsourcedWorkingPart.Name, outsourcedWorkingPart.InStock, outsourcedWorkingPart.Price, outsourcedWorkingPart.Max, outsourcedWorkingPart.Min, outsourcedWorkingPart.CompanyName);
+                Inventory.AddPart(outsourcedPart);
+            }
         }
-
     }
 }

@@ -30,8 +30,8 @@ namespace C968
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.InHouse = new System.Windows.Forms.RadioButton();
-            this.Outsourced = new System.Windows.Forms.RadioButton();
+            this.InHouseRadio = new System.Windows.Forms.RadioButton();
+            this.OutsourcedRadio = new System.Windows.Forms.RadioButton();
             this.PartFormTitle = new System.Windows.Forms.Label();
             this.PartIdInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,29 +53,29 @@ namespace C968
             ((System.ComponentModel.ISupportInitialize)(this.pfep)).BeginInit();
             this.SuspendLayout();
             // 
-            // InHouse
+            // InHouseRadio
             // 
-            this.InHouse.AutoSize = true;
-            this.InHouse.Location = new System.Drawing.Point(126, 11);
-            this.InHouse.Name = "InHouse";
-            this.InHouse.Size = new System.Drawing.Size(86, 21);
-            this.InHouse.TabIndex = 0;
-            this.InHouse.TabStop = true;
-            this.InHouse.Text = "In-House";
-            this.InHouse.UseVisualStyleBackColor = true;
-            this.InHouse.CheckedChanged += new System.EventHandler(this.InHouse_CheckedChanged);
+            this.InHouseRadio.AutoSize = true;
+            this.InHouseRadio.Location = new System.Drawing.Point(126, 11);
+            this.InHouseRadio.Name = "InHouseRadio";
+            this.InHouseRadio.Size = new System.Drawing.Size(86, 21);
+            this.InHouseRadio.TabIndex = 0;
+            this.InHouseRadio.TabStop = true;
+            this.InHouseRadio.Text = "In-House";
+            this.InHouseRadio.UseVisualStyleBackColor = true;
+            this.InHouseRadio.CheckedChanged += new System.EventHandler(this.InHouse_CheckedChanged);
             // 
-            // Outsourced
+            // OutsourcedRadio
             // 
-            this.Outsourced.AutoSize = true;
-            this.Outsourced.Location = new System.Drawing.Point(229, 11);
-            this.Outsourced.Name = "Outsourced";
-            this.Outsourced.Size = new System.Drawing.Size(103, 21);
-            this.Outsourced.TabIndex = 1;
-            this.Outsourced.TabStop = true;
-            this.Outsourced.Text = "Outsourced";
-            this.Outsourced.UseVisualStyleBackColor = true;
-            this.Outsourced.CheckedChanged += new System.EventHandler(this.Outsource_CheckedChanged);
+            this.OutsourcedRadio.AutoSize = true;
+            this.OutsourcedRadio.Location = new System.Drawing.Point(229, 11);
+            this.OutsourcedRadio.Name = "OutsourcedRadio";
+            this.OutsourcedRadio.Size = new System.Drawing.Size(103, 21);
+            this.OutsourcedRadio.TabIndex = 1;
+            this.OutsourcedRadio.TabStop = true;
+            this.OutsourcedRadio.Text = "Outsourced";
+            this.OutsourcedRadio.UseVisualStyleBackColor = true;
+            this.OutsourcedRadio.CheckedChanged += new System.EventHandler(this.Outsource_CheckedChanged);
             // 
             // PartFormTitle
             // 
@@ -251,8 +251,8 @@ namespace C968
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PartIdInput);
             this.Controls.Add(this.PartFormTitle);
-            this.Controls.Add(this.Outsourced);
-            this.Controls.Add(this.InHouse);
+            this.Controls.Add(this.OutsourcedRadio);
+            this.Controls.Add(this.InHouseRadio);
             this.Name = "PartForm";
             this.Text = "PartsForm";
             ((System.ComponentModel.ISupportInitialize)(this.pfep)).EndInit();
@@ -263,8 +263,8 @@ namespace C968
 
         #endregion
 
-        private System.Windows.Forms.RadioButton InHouse;
-        private System.Windows.Forms.RadioButton Outsourced;
+        private System.Windows.Forms.RadioButton InHouseRadio;
+        private System.Windows.Forms.RadioButton OutsourcedRadio;
         private System.Windows.Forms.TextBox PartIdInput;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

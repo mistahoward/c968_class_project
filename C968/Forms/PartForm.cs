@@ -48,10 +48,16 @@ namespace C968
                 {
                     var inHousePart = (InHousePart)selectedPart;
                     PartExtraInput.Text = inHousePart.MachineId.ToString();
+                    PartExtraLabel.Text = "Machine ID";
+                    InHouseRadio.Checked = true;
+                    SelectedPartType = PartTypes.InHousePart;
                 } else
                 {
                     var outsourcedPart = (OutsourcedPart)selectedPart;
                     PartExtraInput.Text = outsourcedPart.CompanyName;
+                    PartExtraLabel.Text = "Company Name";
+                    OutsourcedRadio.Checked = true;
+                    SelectedPartType = PartTypes.OutsourcedPart;
                 }
             } else
             {
@@ -105,10 +111,10 @@ namespace C968
                     {
                         // constructor for outsourced parts, add to inventory, close
                         var partToAdd = new OutsourcedPart(
-                            Convert.ToInt32(PartIdInput.Text), 
-                            PartNameInput.Text, 
+                            Convert.ToInt32(PartIdInput.Text),
+                            PartNameInput.Text,
                             inventory,
-                            Convert.ToDecimal(PartPriceInput.Text), 
+                            Convert.ToDecimal(PartPriceInput.Text),
                             max,
                             min,
                             PartExtraInput.Text
@@ -118,7 +124,7 @@ namespace C968
                     } else if (SelectedPartType == PartTypes.InHousePart)
                     {
                         // consturctor for inhouse part, add to inventory, close 
-                        var partToAdd = new InHousePart (
+                        var partToAdd = new InHousePart(
                             Convert.ToInt32(PartIdInput.Text),
                             PartNameInput.Text,
                             inventory,
@@ -128,6 +134,35 @@ namespace C968
                             Convert.ToInt32(PartExtraInput.Text)
                         );
                         Inventory.AddPart(partToAdd);
+                        this.Close();
+                    }
+                } else
+                {
+                    if (SelectedPartType == PartTypes.OutsourcedPart)
+                    {
+                        var outsourcedPartToUpdate = new OutsourcedPart(
+                            Convert.ToInt32(PartIdInput.Text),
+                            PartNameInput.Text,
+                            inventory,
+                            Convert.ToDecimal(PartPriceInput.Text),
+                            max,
+                            min,
+                            PartExtraInput.Text
+                        );
+                        Inventory.UpdatePart(Convert.ToInt32(PartIdInput.Text), outsourcedPartToUpdate);
+                        this.Close();
+                    } else
+                    {
+                        var inHousePartToUpdate = new InHousePart(
+                           Convert.ToInt32(PartIdInput.Text),
+                           PartNameInput.Text,
+                           inventory,
+                           Convert.ToDecimal(PartPriceInput.Text),
+                           max,
+                           min,
+                           Convert.ToInt32(PartExtraInput.Text)
+                       );
+                        Inventory.UpdatePart(Convert.ToInt32(PartIdInput.Text), inHousePartToUpdate);
                         this.Close();
                     }
                 }
