@@ -88,6 +88,7 @@ namespace C968
             // 
             // PartIdInput
             // 
+            this.PartIdInput.Enabled = false;
             this.PartIdInput.Location = new System.Drawing.Point(20, 71);
             this.PartIdInput.Name = "PartIdInput";
             this.PartIdInput.Size = new System.Drawing.Size(100, 22);

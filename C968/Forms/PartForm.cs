@@ -53,6 +53,11 @@ namespace C968
                     var outsourcedPart = (OutsourcedPart)selectedPart;
                     PartExtraInput.Text = outsourcedPart.CompanyName;
                 }
+            } else
+            {
+                // Same function as products, get the highest ID, add one, set it to the input
+                var highestPartId = Inventory.Parts.Max(p => p.PartId);
+                PartIdInput.Text = (highestPartId + 1).ToString();
             }
         }
         private void Outsource_CheckedChanged(object sender, EventArgs e)

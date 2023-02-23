@@ -49,6 +49,11 @@ namespace C968
                 {
                     ProductParts.Add(part);
                 }
+            } else
+            {
+                // grab the highest ID, auto increment it one, convert it to a string and set it as input value
+                var highestId = Inventory.Products.Max(p => p.ProductId);
+                ProductIdInput.Text = (highestId + 1).ToString();
             }
         }
         private void ProductForm_Load(object sender, EventArgs e)

@@ -82,6 +82,7 @@ namespace C968
             // 
             // ProductIdInput
             // 
+            this.ProductIdInput.Enabled = false;
             this.ProductIdInput.Location = new System.Drawing.Point(16, 74);
             this.ProductIdInput.Name = "ProductIdInput";
             this.ProductIdInput.Size = new System.Drawing.Size(100, 22);
